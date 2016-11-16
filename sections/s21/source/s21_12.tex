@@ -1,0 +1,254 @@
+\documentclass{spisok-article}
+
+\usepackage{amsthm}
+\usepackage{ bbold }
+\ifpdf\usepackage{epstopdf}\fi
+\usepackage{longtable,booktabs}
+\usepackage{color}
+\usepackage{fancyvrb}
+
+
+\newtheorem{myprop}{Предложение}
+\newtheorem*{myprop*}{Предложение}
+\newtheorem{mylemma}{Лемма}
+\newtheorem*{mylemma*}{Лемма}
+\newtheorem{mytheor}{Теорема}
+\newtheorem*{mytheor*}{Теорема}
+\newtheorem{corol}{Следствие}
+\theoremstyle{definition}
+\newtheorem{mydef}{Определение}
+\newtheorem*{mydef*}{Определение}
+
+
+
+\title{Обобщенные обратные матрицы в однофакторном дисперсионном анализе}
+
+\author{Белоусов Ю.С., студент, СПбГУ, bus99@ya.ru\\
+Алексеева Н.П., к.ф.-м.н., доцент, СПбГУ, ninaalexeyeva@mail.ru}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Рассматривается задача оценки параметров в модели однофакторного дисперсионного анализа. Известные методы решения позволяют построить несмещенную оценку с минимальной возможной дисперсией. Однако, если ослабить требование минимальности дисперсии, то можно получать оценки, удовлетворяющие дополнительным свойствам (например, меньшие корреляции). В данной работе предлагается метод оценивания параметров, основанный на обобщенно обратных матрицах, практический способ для их вычисления в этом случае. Кроме того, демонстрируется использование обобщенных обратных для достижения дополнительных свойств оценок.
+\end{abstract}
+
+\section{Введение}
+Рассмотрим классическую задача однофакторного дисперсионного анализа \cite{sheffe}
+\[
+\begin{cases}
+y_{ij} = \mu + \beta_i + \varepsilon_{ij} & i = 1, \dots , r;\ j = 1, \dots , n_i \\
+\{\varepsilon_{ij}\} &  \text{независимы и распределены } N(0, \sigma^2). \\
+\end{cases}
+\]
+В матричном виде она выглядит как 
+\begin{equation} \label{main_v}
+Y = X\beta + \varepsilon,
+\end{equation}
+где $Y$ --- вектор наблюдений, $X$ --- матрица плана, $B$ --- вектор параметров, а $\varepsilon$ --- матрица ошибок. Причем,
+\[Y = 
+\begin{pmatrix}
+y_{11} \\ \dots \\ y_{1n_1} \\ y_{21} \\ \dots \\ y_{2n_2} \\ y_{r1} \\ \dots \\ y_{rn_r}
+\end{pmatrix},\ 
+X = \begin{pmatrix}
+&1 & 1 & 0 & \dots & 0 &\\
+&\dots & \dots & \dots & \dots & \dots &\\
+&1 & 1 & 0 & \dots & 0 &\\
+\cline{2-6}
+&1 & 0 & 1 & \dots & 0 &\\
+&\dots & \dots & \dots & \dots & \dots &\\
+&1 & 0 & 1 & \dots & 0 &\\
+\cline{2-6}
+&\dots & \dots & \dots & \dots & \dots &\\
+\cline{2-6}
+&1 & 0 & 0 & \dots & 1 &\\
+&\dots & \dots & \dots & \dots & \dots &\\
+&1 & 0 & 0 & \dots & 1 &\\
+\end{pmatrix}, \ 
+\beta = \begin{pmatrix}
+\mu \\ \beta_1 \\ \dots \\ \beta_r
+\end{pmatrix}.
+\] 
+Задача состоит в оценке вектора параметров. Естественно искать ее методом наименьших квадратов, т.е. как решение задачи
+\begin{equation}\label{basic_eq}
+||Y - X\beta|| \to \min_\beta.
+\end{equation}
+Откуда получается, что оценкой является решение системы $X^ \mathrm{T} X\beta = X^\mathrm{T}Y$. Из необратимости матрицы $X^ \mathrm{T} X$ следует, что решение не единственное. Однако, если рассматривать минор матрицы $X$ без последнего столбца (иначе говоря, для последней группы не вводить дополнительную градацию $\beta_r$) и решать аналогичное уравнение, то оно имеет единственное решение. Кроме того, эта оценка будет несмещенной и с минимальной дисперсией\cite{demid}, в следующем смысле: обозначив это решение за $\hat{\beta}$, a соответствующую ему ковариационную матрицу за $\Sigma_{\hat{\beta}}$, для любой другой несмещенной оценки $\tilde{\beta}$ матрица $\Sigma_{\tilde{\beta}}-\Sigma_{\hat{\beta}}$ положительно определена.
+
+Цель данной работы состоит в исследовании остальных решений \eqref{basic_eq}, с учетом введения последней градации.
+\section{Теоретические сведения и результаты}
+\subsection{Наложение дополнительных линейных ограничений}
+Предположение, описанное выше, является частным случаем следующей идеи: от решения \eqref{basic_eq} также требуется выполнение условия $H\beta=Y_2$, где $H \in \mathbb{R}^{p \times t}$, а $Y_2 \in \mathbb{R}^p$. Известна следующая
+\begin{mytheor*}\cite{sheffe}
+Пусть имеется совместная система $Xb=z$, где $X \in \mathbb{R}_r^{p \times n}, b \in \mathbb{R}^p, z \in \mathbb{R}^n$. Кроме того, дана матрица $H \in \mathbb{R}^{p \times t},\ t \leq p-r$. Тогда имеется единственное решение $b_0$ системы уравнений 
+\[
+\begin{cases}
+Xb=z\\
+Hb=0
+\end{cases} 
+\] 
+в том и только в том случае, когда выполняются два условия:
+\begin{enumerate}
+\item Ранг составной матрицы 
+$\begin{pmatrix}
+X\\
+H
+\end{pmatrix}$
+равен $p$.
+\item Никакая линейная комбинация строк $H$ (кроме $0$) не представляется в виде линейной комбинации строк $X$.
+\end{enumerate}
+\end{mytheor*} 
+Конкретно, для случая, описанного выше имеем линейное ограничение следующего вида\\
+$\begin{pmatrix}
+0 & \dots & 0 & 1 \\
+0 & \dots & \dots  & 0 \\
+\vdots & \ddots & \ddots & \vdots \\
+0 & \dots & \dots & 0
+\end{pmatrix}\beta = \begin{pmatrix}
+0 \\ \vdots \\ 0
+\end{pmatrix}.$\\
+Однако, как будет показано далее, этот подход так же может быть выражен в терминах обобщенных обратных.
+\subsection{Обобщенно обратные матрицы}
+Приведем необходимые теоретические сведения. Пусть $A \in \mathbb{R}^{r \times n}$ и $A^-\in \mathbb{R}^{n\times r}$. Рассмотрим 4 соотношения:
+\[
+\begin{matrix}
+O1: & AA^-A & = & A,\\
+O2: & A^-AA^-& = & A^-, \\
+O3: & (AA^-)^* & = & AA^-,\\
+O4: & (A^-A)^*& = & A^-A,\\
+\end{matrix}
+\]
+где $A^*$ --- сопряженная матрица. 
+\begin{mydef*}
+$A^{(i,j, \dots, k)}$ называться $\{(i), (j), \dots, (k)\}$-обратной к $A$, если она удовлетворяет соотношениям $(i), (j), \dots, (k)$ из $O1-O4$. $\{1\}$-обратная к $A$ так же будет называться обобщенной обратной.
+\end{mydef*}
+
+Так же приведем здесь без доказательства теорему, являющуюся основой построения оценок в модели \eqref{basic_eq} через обобщенный обратные матрицы.
+\begin{mytheor} \label{best_est_th}
+В задаче $||Ax-b|| \to \min$, где $A \in \mathbb{R}^{k \times n}$ и $b \in \mathbb{R}^k$ и норма евклидова, минимум достигается при $x=A^{(1,3)}b$. Обратно, если матрица $X \in \mathbb{R}^{n \times k}$ обладает свойством, что для любого $b$ значение $||Ax-b||$ минимально при $x=Xb$, то $X \in A\{1,3\}$.
+\end{mytheor}
+
+Укажем теперь на связь построения оценок через введение линейных ограничений, и через обобщенные обратные. Пусть есть задача
+\begin{align*}
+&||X\beta - Y|| \to \min \\ 
+&H\beta = Y_2.
+\end{align*}
+Тогда, положив $\overline{H} = X(\mathbb{1}-H^{(1)}H)$, $\overline{Y}=Y-XH^{(1)}Y_2$ и, взяв  любое $z$,  оценка получается как
+\begin{equation*}
+\hat{\beta}= H^{(1)}Y_2+\left(\mathbb{1}-H^{(1)}H\right)\left(\overline{H}^{(1,3)}\overline{Y}+(\mathbb{1}-\overline{H}^{(1,3)}\overline{H})z\right).
+\end{equation*}
+В случае, когда линейные ограничения обеспечивают единственность решения, можно положить $z = 0$ и все матрицы брать псевдообратными. Стандартный случай здесь примет следующий вид: $\hat{\beta}=(\mathbb{1} - H^+H)((X(\mathbb{1}-H^+H)^+Y)$. 
+\subsubsection{Построение обобщенно обратных}
+Построение обобщенных обратных матриц может осуществляться, например, с помощью матричной параметризации, предложенной в \cite{bart}. Она строится следующим образом. Пусть $\mathbb{N}_n$ --- начальный отрезок натурального ряда длины $n$. Обозначим $\nu(l|n) = \{(\nu_1, \nu_2, \dots, \nu_l)\ |\ \nu_1 < \nu_2 < \dots < \nu_l;\ \nu_i \in \mathbb{N}_n\}$. Матрица, составленная из строк ($\mathbb{1}_\nu(l|n)$) или из столбцов ($\mathbb{1}^\nu(l|n)$) матрицы $\mathbb{1}_n$, соответствующих множеству $\nu(l|n)$, называется $\nu$-частичной. Кроме того ${\mathbb{1}^\lambda_\nu}=\mathbb{1}_\nu\mathbb{1}^\lambda$. Тогда для $A \in \mathbb{R}^{k \times n}$ ранга $r$, и таких $\lambda = \lambda(r|k)$, $\nu = \nu(r|n)$, что $\det{A^\lambda_\nu} \neq 0$, обобщенная обратная к $A$ может быть записана в виде
+\begin{equation*}
+A^-=(A_\lambda)^-A^\nu_\lambda(A^\nu)^-,
+\end{equation*}
+где 
+\begin{align*}
+(A_\lambda)^- 	&= \mathbb{1}^\nu(A^\nu_\lambda)^{-1} + (\mathbb{1}_n - \mathbb{1}^\nu(A^\nu_\lambda)^{-1}A_\lambda)Q,\\
+(A^\nu)^-		&=(A^\nu_\lambda)^{-1} \mathbb{1}_\lambda + P( \mathbb{1}_k - A^\nu(A^\nu_\lambda)^{-1}\mathbb{1}_\lambda), 
+\end{align*}
+а параметрами обращения являются миноры $P^{(\lambda)}$ и $Q_{(\nu)}$ матриц $P$ и $Q$ из $\mathbb{R}^{r \times k}$ и $\mathbb{R}^{n \times r}$ соответственно. При этом принято следующее обозначение $(\lambda) := \mathbb{N}_k \setminus \{\lambda\}$.
+
+\subsection{Дополнительные свойства оценок}
+Теперь формализуем задачу. В условиях модели \eqref{basic_eq}, оценка вектора параметров $\beta$ строится как решение задачи
+\begin{align} \label{z_1}
+\begin{cases}
+||Y - X\beta|| \to \min\\
+F(\beta) \to \min,
+\end{cases} 
+\end{align}
+где $F$ --- некоторый функционал. Далее, используя теорему \ref{best_est_th}, первое условие переписывается как $\beta=X^{(1,3)}Y$, а вся задача принимает вид
+\begin{align}
+F(X^{(1,3)}Y) \to \min_{X^{(1,3)} \in X\{1,3\}}.  \tag{3.1}
+\end{align}
+
+\subsection{Примеры}
+\subsubsection{Минимальная норма решения}
+Если взять $F(\beta) = ||\beta||_2$, то решение может быть получено на основе известной теоремы
+\begin{mytheor} \cite{penrose2}
+Пусть  $A \in \mathbb{R}^{k \times n}$ и $b \in \mathbb{R}^k$, тогда МНК решение уравнения $Ax=b$ $x=A^+b$ --- одно из решений с минимальной нормой. Обратно, если для любого $b$ $x=Xb$ --- решение $Ax=b$ с минимальной нормой, то $X=A^+$.
+\end{mytheor}Откуда следует, что в качестве решения этой задачи нужно взять $\beta=X^+Y$.
+\subsubsection{Диагональность ковариационной матрицы}
+Полагая $\sigma^2 = 1$, рассмотрим следующий случай: $r = 4$, $n_1 =  n_2 = n_3 =  n_4 = 3$. Обозначив $cov(\beta) = \{\sigma_{ij}\}_{0 \leq i, j\leq 4}$, определим $F(\beta) = \sum_{i \neq j}{|\sigma_{ij}|}$. Иначе говоря, минимизируем сумму модулей внедиагональных элементов ковариационной матрицы оценок. Сначала найдем выражение для ковариационной матрицы: $cov(\beta) = cov(X^{(1,3)}Y) = cov\left(X^{(1,3)}(X + \varepsilon)\right) = X^{(1,3)}\left(X^{(1,3)}\right)^\mathrm{T}$.  
+Взяв $\nu =~ \{1,2,3,4\}$, $\lambda =~ \{1, 4, 7, 10\}$, принимаем параметры\\ 
+$P^{(\lambda)} = 
+\begin{pmatrix}
+0 & 0 & 0 & 0 & 0 & 0 & \ \ \frac{1}{3} & \ \ \frac{1}{3} \\
+\frac{1}{3} & \frac{1}{3} & 0 & 0 & 0 & 0 & -\frac{1}{3} & -\frac{1}{3} \\
+0 & 0 & \frac{1}{3} & \frac{1}{3} & 0 & 0 & -\frac{1}{3} & -\frac{1}{3} \\
+0 & 0 & 0 & 0 & \frac{1}{3} & \frac{1}{3} & -\frac{1}{3} & -\frac{1}{3} \\
+\end{pmatrix}, 
+\ \ Q_{(\nu)} = \begin{pmatrix}
+0 & 0 & 0 & 1
+\end{pmatrix}.
+$\\
+Финально получаем \[
+cov(\beta) = \begin{pmatrix}
+0 & 0 & 0 & 0 & 0 \\
+0 & \frac{1}{3} & 0 & 0 & 0 \\
+0 & 0 & \frac{1}{3} & 0 & 0 \\
+0 & 0 & 0 & \frac{1}{3} & 0 \\
+0 & 0 & 0 & 0 & \frac{1}{3} \\
+\end{pmatrix}.
+\]
+Здесь параметр $P^{(\lambda)}$ обеспечивает выполнение свойства $O3$, а параметр $Q_{(\nu)}$ --- диагональность матрицы. 
+
+Если рассмотреть данную задачу для произвольных $r$ и набора $\{n_i\}_{1 \leq i \leq r}$, можно взять параметры обращения $\nu =~ \{1,2,\dots, r\}$, $\lambda =~ \{1, 1 + n_1, 1 + n_1 + n_2,\dots, 1+\sum_{i=1}^{r-1}n_i\}$ и 
+\[P^{(\lambda)} = 
+\begin{pmatrix}
+0 			   & \dots & 0 				 & \vline\ \   \dots\ \  \vline &0 			   & \dots & 0 				 	 	  & \vline & \ \ \frac{1}{n_r} & \dots\ \ \ \  \ \frac{1}{n_r}\\
+\frac{1}{n_1}  & \dots & \frac{1}{n_1}  & \vline\ \   \dots\ \  \vline &0 			   & \dots & 0 				 	  & \vline & -\frac{1}{n_r} & \dots \ \ -\frac{1}{n_r}\\
+0 &  \dots 		& 0 					 & \vline\ \   \dots\ \  \vline &\vdots		   & \ddots & \vdots 		 	  & \vline & \ \ \vdots & \ddots\ \ \ \ \  \ \vdots\ \ \ \\
+\vdots & \ddots & \vdots 				 & \vline\ \   \dots\ \  \vline &0 			   & \dots & 0 				 	 	  & \vline & -\frac{1}{n_r} & \dots \ \  -\frac{1}{n_r} \\
+0 & \dots 		& 0 					 & \vline\ \   \dots\ \  \vline &\frac{1}{n_{r-1}}  & \dots & \frac{1}{n_{r-1}} & \vline & -\frac{1}{n_r} & \dots \ \  -\frac{1}{n_r}\\
+\end{pmatrix}, \]
+\[Q_{(\nu)} = \begin{pmatrix}
+0 & \dots & 0 & 1
+\end{pmatrix}.\] 
+В $i$-ом блоке $P^{(\lambda)}$ ровно $n_i - 1$ столбцов. \\ При таких параметрах $cov(\beta) = \begin{pmatrix}
+0 & 0 & 0& \dots & 0  \\
+0 & \frac{1}{n_1} & 0 & \dots & 0 \\
+0 & 0 & \ddots & \ddots & 0 \\
+\vdots & \vdots & \ddots & \ddots & 0 \\
+0 & 0 &\dots &0 & \frac{1}{n_r}
+\end{pmatrix}.
+$
+
+\newpage
+
+\section{Заключение}
+В работе был представлен метод построения оценок через обобщенные обратные матрицы с учетом дополнительных свойств, показан метод построения обобщенных обратных, а также приведены примеры для демонстрации этого метода. 
+
+\renewcommand\refname{Литература}
+\begin{thebibliography}{8}
+\bibitem{sheffe}
+Г. Шеффе.
+\newblock Дисперсионный анализ.
+\newblock {Москва <<Наука>>},
+  1980.
+  
+    
+\bibitem{demid}
+Е.З. Демиденко
+\newblock Линейная и нелинейная регрессия.
+\newblock {Москва <<Финансы и статистика>>},
+  1981.
+   
+\bibitem{bart}
+A. Г. Барт.
+\newblock Анализ медико-биологических систем.
+\newblock {Издательство Санкт-Петербургского университета},
+  2003.
+
+\bibitem{penrose2}
+R. Penrose.
+\newblock On best approximate solutions of linear matrix equations.
+\newblock{ Mathematical Proceedings of the Cambridge Philosophical Society},
+1956.
+
+
+\end{thebibliography}
+
+\end{document}
