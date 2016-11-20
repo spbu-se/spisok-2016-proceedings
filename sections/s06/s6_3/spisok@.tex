@@ -1,0 +1,464 @@
+\documentclass{spisok-article}
+     %\usepackage{amssymb}
+     \usepackage{color}
+     \usepackage{amsmath}
+     \usepackage{amscd}
+          \usepackage{textcomp}
+          \usepackage{euscript}
+          
+\newtheorem{Lemma}{Лемма}
+
+
+\def\bull{\vrule height.9ex width.8ex depth-.1ex}%square bullet
+
+   %\def\defabove{\raise3pt\hbox {${{\lower2pt  \hbox {${\scriptscriptstyle {\rm def}}$}}}  \atop = $}}
+
+\newcommand{\defabove}{\stackrel{\rm def}{=\kern-3.6pt=}}
+
+\def\quaabove{\raise5pt\hbox {${{\lower2pt  \hbox {${\scriptstyle ?}$}}}  \atop \equiv $}}
+
+\def\aa{\hbox{\rm \bf a}}
+   \def\bb{\hbox{\rm \bf b}}
+   \def\cc{\hbox{\rm \bf c}}
+   \def\dd{\hbox{\rm \bf d}}
+   \def\ee{\hbox{\rm \bf e}}
+   \def\ff{\hbox{\rm \bf f}}
+   \def\gg{\hbox{\rm \bf g}}
+   \def\hh{\hbox{\rm \bf h}}
+   \def\ll{\hbox{\rm \bf l}}
+   \def\xx{\hbox{\rm \bf x}}
+   \def\yy{\hbox{\rm \bf y}}
+   \def\zz{\hbox{\rm \bf z}}
+   \def\uu{\hbox{\rm \bf u}}
+   \def\vv{\hbox{\rm \bf v}}
+   \def\ww{\hbox{\rm \bf w}}
+
+
+   \def\laa{\hbox{\rm \bf A}}
+   \def\lbb{\hbox{\rm \bf B}}
+   \def\ldd{\hbox{\rm \bf D}}
+   \def\lnn{\hbox{\rm \bf N}}
+   \def\slaa{\hbox{\footnotesize \rm \bf A}}
+   \def\ssdd{\hbox{\footnotesize \rm \bf d}}
+   \def\lrr{\hbox{\rm \bf R}}
+
+   \def\lff{\hbox{\rm \bf F}}
+   \def\loo{\hbox{\rm \bf O}}
+   \def\lcc{\hbox{\rm \bf C}}
+   \def\lxx{\hbox{\rm \bf X}}
+   \def\lnn{\hbox{\rm \bf N}}
+
+   \def\ezero{\raise3pt\hbox {${{\lower2pt  \hbox {${\scriptscriptstyle 0}$}}}\atop \displaystyle{\rm \bf e}$}}
+   \def\eone{\raise3pt\hbox {${{\lower2pt  \hbox {${\scriptscriptstyle 1}$}}}\atop \displaystyle{\rm \bf e}$}}
+   \def\etwo{\raise3pt\hbox {${{\lower2pt  \hbox {${\scriptscriptstyle 2}$}}}\atop \displaystyle{\rm \bf e}$}}
+
+
+   \def\omm{\raise3pt\hbox {${{\lower2pt  \hbox {${\scriptscriptstyle m}$}}}\atop \displaystyle{\omega}$}}
+   \def\omone{\raise3pt\hbox {${{\lower2pt  \hbox {${\scriptscriptstyle 1}$}}}\atop \displaystyle{\omega}$}}
+   \def\omtwo{\raise3pt\hbox {${{\lower2pt  \hbox {${\scriptscriptstyle 2}$}}}\atop \displaystyle{\omega}$}}
+   \def\omthree{\raise3pt\hbox {${{\lower2pt  \hbox {${\scriptscriptstyle 3}$}}}\atop \displaystyle{\omega}$}}
+
+   \def\oms{\raise3pt\hbox {${{\lower2pt  \hbox {${\scriptscriptstyle (S)}$}}}\atop \displaystyle{\omega}$}}
+   \def\dsum{\raise3pt\hbox {${{\lower2pt  \hbox {${ .}$}}}\atop \displaystyle{+}$}}
+
+   \def\symb{\scriptscriptstyle {*}}
+      \def\symbb{\scriptscriptstyle {\diamond}}
+
+   \def\kzv{\hbox{\small \scriptsize  $K_*$}}
+   \def\kzvpone{\hbox{\small \scriptsize  $K_*+1$}}
+   \def\lkzv{\hbox{\small\footnotesize  $K_*$}}
+   \def\lkzvpone{\hbox{\small\footnotesize  $K_*+1$}}
+
+
+   \def\kmfive{\hbox{\small \scriptsize\tiny  $k-5$}}
+   \def\kmfour{\hbox{\small \scriptsize\tiny  $k-4$}}
+   \def\kmthree{\hbox{\small \scriptsize\tiny  $k-3$}}
+   \def\kmtwo{\hbox{\small \scriptsize\tiny  $k-2$}}
+   \def\kmone{\hbox{\small \scriptsize\tiny $k-1$}}
+   \def\kmzero{\hbox{\small\scriptsize\tiny $k$}}
+   \def\kpone{\hbox{\small \scriptsize\tiny  $k+1$}}
+   \def\kptwo{\hbox{\small \scriptsize\tiny  $k+2$}}
+   \def\kpthree{\hbox{\small \scriptsize\tiny  $k+3$}}
+   \def\kpfour{\hbox{\small\tiny $k+4$}}
+   \def\kpfive{\hbox{\small\tiny $k+5$}}
+
+   \def\mtwo{\hbox{\small \scriptsize\tiny  $-2$}}
+   \def\nmone{\hbox{\small \scriptsize\tiny  $N-1$}}
+   \def\nmtwo{\hbox{\small \scriptsize\tiny  $N-2$}}
+
+   \def\kprmtwo{\hbox{\small \scriptsize $k+r-2$}}
+   \def\kprmone{\hbox{\small \scriptsize $k+r-1$}}
+   \def\kprmzero{\hbox{\small \scriptsize $k+r$}}
+   \def\kprpone{\hbox{\small \scriptsize $k+r+1$}}
+
+   \def\tmtwo{\hbox{\small \scriptsize $\widehat{-2}$}}
+   \def\tkmfive{\hbox{\small \scriptsize $\widehat{k-5}$}}
+   \def\tkmfour{\hbox{\small \scriptsize $\widehat{k-4}$}}
+   \def\tkmthree{\hbox{\small \scriptsize  $\widehat{k-3}$}}
+   \def\tkmtwo{\hbox{\small \scriptsize  $\widehat{k-2}$}}
+   \def\tkmone{\hbox{\small \scriptsize $\widehat{k-1}$}}
+   \def\tkmzero{\hbox{\small\scriptsize $\widehat{\phantom{a}k\phantom{a}}$}}
+   \def\tkpone{\hbox{\small \scriptsize  $\widehat{k+1}$}}
+   \def\tkptwo{\hbox{\small \scriptsize  $\widehat{k+2}$}}
+   \def\tkpthree{\hbox{\small \scriptsize  $\widehat{k+3}$}}
+   \def\tkpfour{\hbox{\small \scriptsize $\widehat{k+4}$}}
+   \def\tkpfive{\hbox{\small \scriptsize$\widehat{k+5}$}}
+
+\title{Построение сетки адаптивного типа\thanks{Работа выполнена при финансовой поддержке РФФИ, грант № 15-01-08847}
+}
+
+\author{Сазонова Г. О., студент СПбГУ, galinasazo@gmail.com\\Демьянович Ю. К., профессор СПбГУ, yuri.demjanovich@gmail.com,}
+}
+
+\begin{document}
+
+\maketitle
+
+\section{Введение}
+   В современном мире потоки информации имеют электронную форму.
+   Как правило, это последовательность 0 и 1 внушительной длины
+   ($10^{12} - 10^{16}$ символов). Такие объемы обрабатываются быстро
+   только в случае, когда имеются достаточно большие компьютерные ресурсы
+   (память, быстродействие и т.д.); поэтому актуален вопрос о сокращении
+   объемов цифровой информации за счет отбрасывания несущественных
+   ее составляющих.
+
+   На первом месте среди средств разрешения данного вопроса
+   несомненно находятся вейвлеты, что подтверждается большим числом
+   приложений в различных технических и научных областях. Вейвлетное
+   разложение рассматривается, как правило, на равномерной сетке
+   (см., например, \cite{leb, ter}). Но за последнее время получили
+   распространение сплайн-всплесковые  разложения, ассоциируемые с
+   неравномерной сеткой (см. \cite{mall, dem}). Введение неравномерных
+   сеток важно в случае нерегулярного поведения исходного потока: в
+   областях медленного изменения упомянутого потока естественно
+   использовать крупную сетку, а в областях быстрого изменения
+   необходима мелкая сетка. При таком подходе возможно
+   последовательное адаптивное укрупнение возникающих таким образом
+   неравномерных сеток для получения всплескового пакета с заданной
+   аппроксимацией исходного потока.
+%\newpage
+   \section{Сетка адаптивного типа}
+    Использование цепочек вложенных пространств сплайнов позволяет
+  строить вейвлетные разложения (декомпозицию и реконструкцию)
+  в весьма общих условиях, в том числе, с использованием неравномерной
+  сетки. Далее будет рассмотрена сетка адаптивного типа, которая
+  зависит от заданного числового потока $f$ и положительного параметра
+  $\varepsilon$.
+
+  Пусть на интервале $(\alpha,\beta)$ рассматривается сетка
+ $$\Xi:\quad
+    \ldots<\xi_{-2}<\xi_{-1}<\xi_0<\xi_1<\xi_2\ldots, $$
+    $$\lim_{i\to -\infty}\xi_i=\alpha,\quad \lim_{i\to
+    +\infty}\xi_i=\beta.
+            $$
+    Множество функций $u(t)$, заданных на сетке $\Xi$, обозначим
+    $C(\Xi)$. \linebreak Ясно, что  $C(\Xi)$ --- линейное пространство.
+
+     Пусть $f\in C(\Xi)$, и для некоторой константы $c>0$
+     справедливо соотношение
+    $$ f(t)\geq
+     c\quad\forall t\in\Xi.
+    \eqno(1)    $$
+
+    Если  $a\in\Xi$, то существует такое $i\in\mathbb Z$, что
+    $a=\xi_i$. В этом случае обозначим $a^-\defabove\xi_{i-1} $,
+    $a^+\defabove\xi_{i+1}$.
+
+    Дальше предполагается, что
+    $$a,b\in \Xi,\quad a^+<b^-,
+     \eqno(2)   $$
+     т.е. для некоторых $i,j\in\mathbb Z$,
+    $i+2<j$, верны равенства $a=\xi_i$, $b=\xi_j$. При упомянутых
+    $a$ и $b$ введем  обозначение
+     $$\textlbrackdbl $a,b$\textrbrackdbl \defabove\{\xi_s\;|\;a\leq\xi_s\leq
+     b,\; s\in\mathbb Z\},$$
+      т.е.
+      
+      \textlbrackdbl$a,b$\textrbrackdbl$\defabove\{\xi_s\;|\;i\leq s\leq j,\;
+      s\in\mathbb Z\}$. Множество
+      \textlbrackdbl$a,b$\textrbrackdbl $\;$ будем называть сеточным
+      отрезком.
+
+      Рассмотрим линейное нормированное пространство
+      $C$\textlbrackdbl$a,b$\textrbrackdbl$\;$ функций $u(t)$, заданных на
+      сеточном отрезке \textlbrackdbl$a,b$\textrbrackdbl, где
+      норма вводится соотношением
+      $$\|u\|_{C\hbox{\textlbrackdbl$a,b$\textrbrackdbl}}\defabove
+      \max_{t\in \hbox{\textlbrackdbl$a,b$\textrbrackdbl}}|u(t)|.
+            $$
+    Очевидно, что пространство $C\hbox{\textlbrackdbl$a,b$\textrbrackdbl}$  конечномерно.
+
+   Пусть
+  $$\varepsilon\in(\varepsilon^*,\varepsilon^{**}),
+   \eqno(3)  $$
+  где
+   $$ \varepsilon^*\defabove\max_{\xi\in\hbox{\textlbrackdbl$a,b^-$\textrbrackdbl}}
+  \max_{t\in \{\xi,\xi^+\}}f(t)(\xi^+-\xi),\quad
+  \varepsilon^{**}\defabove (b-a)\|f\|_{C\hbox{\textlbrackdbl$a,b$\textrbrackdbl}}.
+   \eqno(4)  $$
+
+    Справедливо следующее утверждение.
+
+    \begin{Lemma}
+      \it $\,$ Если выполнены условия (1), (3), (4), то существуют и единственны натуральное число
+   $K=K(f,\varepsilon,\Xi)$   и сетка
+    $$\widetilde{X}=\widetilde{X}(f,\varepsilon,\Xi):\quad  a=\widetilde{x_0}
+    <\widetilde{x_1}<\ldots< \widetilde {x_{K}}\leq \widetilde{x_{K+1}}=b
+    \eqno(5)    $$
+   такие, что
+  $$\max_{t\in\hbox{\rm\textlbrackdbl}\widetilde{x_s},\;
+        \widetilde{x_{s+1}}\hbox{\rm\textrbrackdbl}} f(t)
+    (\widetilde{x_{s+1}}-\widetilde{x_s})\leq\varepsilon
+    <\max_{t\in\hbox{\rm\textlbrackdbl}\widetilde{x_s},\;
+        \widetilde{x^+_{s+1}}\hbox{\rm\textrbrackdbl}} f(t)
+    (\widetilde{x^+_{s+1}}-\widetilde{x_s})
+    \eqno(6)$$
+    $$\forall s\in\{0,1,\ldots,K-1\},
+    $$
+    $$\max_{t\in\hbox{\rm\textlbrackdbl}\widetilde{x_K},\;b\hbox{\rm\textrbrackdbl}} f(t)
+    (b-\widetilde{x_K})\leq\varepsilon,  \quad \widetilde{X}\subset \Xi.
+    \eqno(7)$$
+    \end{Lemma}
+
+   {\bf Доказательство.}
+    Проводится по индукции.
+База индукции устанавливается следующим образом. Пусть
+    переменная $\tau\in\Xi$ увеличивается от $a=\widetilde{x_0}$ до $b$;
+    тогда ввиду предположения (1) функция
+    $\phi_0(\tau)\defabove \max_{t\in\hbox{\rm\textlbrackdbl}\widetilde{x_0},\;
+      \tau\hbox{\rm\textrbrackdbl}} f(t)(\tau-\widetilde{x_0})$
+    является строго возрастающей и при изменении $\tau$ от
+     $a=\widetilde{x_0}$ к $b$ функция $\phi_0(\tau)$  возрастает от $0$ до
+    $\max_{t\in\hbox{\rm\textlbrackdbl}a,\;b\hbox{\rm\textrbrackdbl}} f(t)(b-a)$.
+    Благодаря условию (3), (4) существует единственная точка $\tau_1\in
+    \hbox{\rm\textlbrackdbl}a,\;b\hbox{\rm\textrbrackdbl}$
+    такая, что
+   $$\max_{t\in\hbox{\rm\textlbrackdbl}\widetilde{x_0},\;
+         \tau_1\hbox{\rm\textrbrackdbl}} f(t)
+    (\tau_1-\widetilde{x_0})\leq\varepsilon
+    <\max_{t\in\hbox{\rm\textlbrackdbl}\widetilde{x_0},\;
+        \tau^+_1\hbox{\rm\textrbrackdbl}} f(t)
+    (\tau^+_1-\widetilde{x_0}).
+    $$
+
+
+    Положим $\widetilde{x_1}\defabove \tau_1$. База индукции установлена.
+
+    Предположим, что узлы $\widetilde{x_1}$, $\dots$, $\widetilde{x_s}$ сетки
+    $\widetilde X$ определены. Если $\widetilde{x_s}=b$, то полагаем $K\defabove s-1$.
+    В этом случае построение сетки $\widetilde{X}(f,\varepsilon,\Xi)$ завершено.
+    В противном случае $\widetilde x_s<b$,
+    и построение сетки продолжается. Рассмотрим функцию
+    $$\phi_s(\tau)\defabove\max_{t\in\hbox{\rm\textlbrackdbl}\widetilde{x_s},\;
+      \tau\hbox{\rm\textrbrackdbl}} f(t)(\tau-\widetilde{x_s});$$
+    она  является строго возрастающей: при изменении $\tau$ от
+     $\widetilde x_s$ до $b$ функция $\phi_s(\tau)$  возрастает от $0$ до
+    $m_s\defabove\max_{t\in\hbox{\rm\textlbrackdbl}\widetilde{x_s},\;
+      b\hbox{\rm\textrbrackdbl}} f(t)(b-\widetilde{x_s})$.
+   Заметим, что если  $\widetilde{x_s}=b^-$, то
+   %\newpage
+   $$m_s=\max_{t\in\{b^-,b\}}f(t)(b-b^-)\leq
+   \max_{\xi\in\hbox{\textlbrackdbl$a,b^-$\textrbrackdbl}}
+  \max_{t\in \{\xi,\xi^+\}}f(t)(\xi^+-\xi)=\varepsilon^*,
+  $$
+  и по предположению (3), (4) имеем $m_s\leq\varepsilon$.
+   Во всех случаях, когда  $m_s\leq \varepsilon,$ полагаем
+   $K\defabove s$ и  $\widetilde x_{s+1}=b$.
+Рассмотрим случай, когда  $\varepsilon<m_s$. Из предыдущего следует,
+    что $\widetilde x_s<b^-$. Пусть при
+    некоторых  $p,q\in \mathbb Z$ справедливы соотношения
+     $\widetilde x_s=\xi_p$ и
+    $m_s= \max_{t\in\hbox{\rm\textlbrackdbl}\widetilde x_s,\;
+      \xi_q\hbox{\rm\textrbrackdbl}} f(t)(\xi_q-\widetilde x_s)$.
+      Очевидно, что $p<q$ (равенство
+    $p=q$ дает $m_s=0$, что противоречит соотношению
+    $\varepsilon<m_s$).
+
+    Поскольку $0<\varepsilon<m_s$, а дискретная функция $\phi_s(\tau)$ принимает
+    возрастающие значения от $0$   до $m_s$, то найдется такое
+    $j$,  что $\xi_j\in\hbox{\rm\textlbrackdbl}\widetilde x_s,\;
+      b^-\hbox{\rm\textrbrackdbl}$ и $\phi_s(\xi_j)\leq
+      \varepsilon<\phi_s(\xi_{j+1})$. Последнее эквивалентно
+      соотношению
+        $$\max_{t\in\hbox{\rm\textlbrackdbl}\widetilde x_s,\;
+        \xi_j\hbox{\rm\textrbrackdbl}} f(t)
+    (\xi_j-\widetilde x_s)\leq\varepsilon
+    <\max_{t\in\hbox{\rm\textlbrackdbl}\widetilde x_s,\;
+        \xi_{j+1}\hbox{\rm\textrbrackdbl}} f(t)
+    (\xi_{j+1}-\widetilde x_s).
+    $$
+
+    Положим $\widetilde x_{s+1}\defabove\xi_j$.
+    Существование  точки  $\widetilde x_{s+1}$,
+    удовлетворяющей соотношениям (6),
+    установлено. Возможными ее значениями являются
+    следующие узлы исходной сетки $\xi_{p+1}$, $\xi_{p+2}$,
+    $\dots$,  $\xi_{q-1}$.  Единственность точки
+     $\widetilde x_{s+1}$ следует из строгого возрастания функции
+   $\phi_s(\tau)$.
+
+      Итак, если $\varepsilon\geq m_s$, то
+    полагаем $K\defabove s$ и $\widetilde x_{s+1}=b$; при этом
+    выполнено соотношение (7).
+      Если же $\varepsilon<m_s$, то найдется единственная точка
+   $\tau_{s+1}<b$ так, что справедливо неравенство (6).
+    Индукционный переход закончен.
+
+    Лемма доказана.
+
+      Сетку вида (5) со свойствами (6), (7) будем называть {\it сеткой
+   адаптивного типа для дискретной функции $f$}.
+
+    Очевидно, что целочисленная функция  $K(f,\varepsilon,\Xi)$ обладает
+    свойством монотонности: если $\varepsilon\,'\leq\varepsilon\,''$,  то
+   $K(f,\varepsilon\,',\Xi)\geq K(f,\varepsilon\,'',\Xi)$.
+
+    Суммированием соотношений (6) получаем неравенство
+      $$\sum_{s=0}^{K-1}\max_{t\in\hbox{\rm\textlbrackdbl}\widetilde x_s,\;
+        \widetilde x_{s+1}\hbox{\rm\textrbrackdbl}} f(t)
+    (\widetilde x_{s+1}-\widetilde x_s)\leq K\varepsilon<$$$$<
+\sum_{s=0}^{K-1}\max_{t\in\hbox{\rm\textlbrackdbl}\widetilde x_s,\;
+        \widetilde x^+_{s+1}\hbox{\rm\textrbrackdbl}} f(t)
+    (\widetilde x^+_{s+1}-\widetilde x_s).
+    $$
+%\newpage
+    \section{О построении сетки адаптивного типа}
+        Приведем иллюстрацию рассуждений, которые были использованы при
+        доказательстве леммы, для случая, когда сетка $\Xi$ равномерная
+        с положительным шагом $h>0$, а ее узлы задаются формулой $\xi_j=jh$.
+        Пусть
+    $$a=\xi_0<\xi_1<\xi_2<\xi_3=b,
+    $$
+    так что рассматриваемый сеточный отрезок имеет вид
+    $\hbox{\rm\textlbrackdbl}a,\;
+      b\hbox{\rm\textrbrackdbl}\defabove
+        \linebreak =\{0,h,2h,3h\}$.
+    Таким образом, $a=0$, $b=3h$. Ясно, что при этом выполнено
+    условие (2):    $a^+=h<b^-=2h$. В этом случае     имеем
+    $$\varepsilon^*=\max\{f(0),f(h),f(2h),f(3h)\}h=
+    \|f\|_{C\hbox{\textlbrackdbl$a,b$\textrbrackdbl}}h,\quad
+    \varepsilon^{**}=3\varepsilon^*.
+    \eqno(8)$$
+    Условие (3) принимает вид
+    $$\varepsilon^*<\varepsilon<3\varepsilon^*.
+    \eqno(9)$$
+    В доказательстве леммы 1 сначала рассматривается функция
+    $\phi_0$. Здесь она принимает вид
+    $\phi_0(\tau)=\max_{t\in\hbox{\rm\textlbrackdbl}0,\;\tau\hbox{\rm\textrbrackdbl}}
+    f(t)\tau$,
+    причем ее аргумент $\tau$ пробегает значения
+    $0$, $h$, $2h$, $3h$, так что $\phi_0(0)=0$,
+    $\phi_0(h)= \linebreak =h\max\{f(0),f(h)\}$,
+    $\phi_0(3h)=2h\max\{f(0),f(h),f(2h)\}$,
+    $\phi_0(3h)= $\linebreak $=3h\|f\|_{C\hbox{\textlbrackdbl$a,b$\textrbrackdbl}}$.
+
+    Полагаем $\widetilde x_0\defabove a$,
+    т.е. в нашем случае  $\widetilde x_0\defabove 0$.
+    Первый шаг, который необходимо сделать --- найти  $\widetilde
+    x_1$ так, чтобы выполнялось соотношение (6) при $s=0$,
+    т.е. среди значений $\tau\in \{0,h,2h\}$ найти такое значение $\tau$, чтобы
+     выполнялось соотношение
+        $$\phi_0(\tau)\leq\varepsilon<\phi_0(\tau^+)
+      $$
+     или, что то же самое, соотношение
+      $$\max_{t\in\hbox{\rm\textlbrackdbl}0,\;
+        \tau\hbox{\rm\textrbrackdbl}} f(t)
+    (\tau)\leq\varepsilon
+    <\max_{t\in\hbox{\rm\textlbrackdbl}0,\;
+        \tau+h\hbox{\rm\textrbrackdbl}} f(t)
+    (\tau+h).
+    $$
+    При  $\tau=0$ это соотношение принимает вид
+    $0\leq\varepsilon< \max \{f(0),f(h)\}h;$
+    такое неравенство противоречит  условиям (8), (9), так
+    что для $\tau$ возможен лишь один из двух вариантов:
+    $$\tau=h,\quad \max \{f(0),f(h)\}h\leq\varepsilon< 2h\max    \{f(0),f(h),f(2h)\},
+    \eqno(10)$$
+    %\newpage
+    $$\tau=2h,\quad 2h\max \{f(0),f(h),f(2h)\}\leq\varepsilon< 3h\|f\|_{C\hbox{\textlbrackdbl$a,b$\textrbrackdbl}}.
+    \eqno(11)    $$
+
+    Если верно соотношение  (10), то согласно (6)  следует положить
+    $$\widetilde x_1\defabove h,
+    \eqno(12)    $$
+     и перейти к отысканию $\widetilde x_2$. Для этого рассмотрим
+     функцию $\phi_1(\tau)= \linebreak =
+    \max_{t\in\hbox{\rm\textlbrackdbl}\widetilde x_1,\;\tau\hbox{\rm\textrbrackdbl}}
+    f(t)(\tau-\widetilde x_1)$.
+    Заметим, что
+    $$\phi_1(h)=0,\quad
+    \phi_1(2h)=h\max_{t\in\hbox{\rm\textlbrackdbl}h,\;2h\hbox{\rm\textrbrackdbl}}
+    f(t)=h\max\{f(h),f(2h)\},
+    \eqno(13)    $$
+    $$\phi_1(3h)=2h\max_{t\in\hbox{\rm\textlbrackdbl}h,\;3h\hbox{\rm\textrbrackdbl}}
+    f(t)=2h\max\{f(h),f(2h),f(3h)\}.
+    \eqno(14)    $$
+
+    Требуется  найти такое $\tau\in\{h,2h\}$,
+    которое удовлетворяет соотношению
+    $$\phi_1(\tau)\leq\varepsilon<\phi_1(\tau^+),
+    \eqno(15)    $$
+    и положить $\widetilde x_2\defabove \tau$.
+
+    При $\tau=h$ соотношение (15) принимает вид
+    $$0=\phi_1(h)\leq \varepsilon<\phi_1(2h).
+    \eqno(16)    $$
+    Легко видеть,  что (16) противоречит условиям  (8), (9).
+    Остается рассмотреть лишь случай $\tau=2h$; в этом случае
+    (15) примет вид
+   $\phi_1(2h)\leq\varepsilon<\phi_1(3h),
+   $
+    или, в соответствии с формулами (13), (14), вид
+     $$h\max\{f(h),f(2h)\}\leq \varepsilon<2h\max\{f(h),f(2h),f(3h)\}.
+    \eqno(17)    $$
+     Итак, если неравенство (17) выполнено, то полагаем
+     $\widetilde x_2\defabove 2h$,  $\widetilde x_3\defabove 3h$.
+     Учитывая соотношение (12), видим, что в этом случае искомая
+     сетка $\widetilde X$ построена; при
+     этом $\widetilde X=\{0,h,2h,3h\}$ (т.е. узлы новой сетки совпадают
+     с последовательными узлами исходной сетки $\xi_j=jh,
+     \;j=\linebreak=0,1,2,3$).
+
+       Если неравенство (17) не выполнено, то ввиду условий
+        (8), (9) заведомо выполнено условие вида (7); в
+    рассматриваемом случае оно принимает вид
+    %\newpage
+     $$2h\max\{f(h),f(2h),f(3h)\}\leq \varepsilon<
+     3h\|f\|_{C\hbox{\textlbrackdbl$a,b$\textrbrackdbl}},
+        $$
+     и потому полагаем $\widetilde x_2\defabove 3h$.
+     
+     Полученная сетка  $\widetilde X=\{0,h,3h\}$.
+
+     До сих пор рассматривалась ситуация, когда выполнено
+      неравенство (10). Теперь предположим, что выполнено
+      неравенство (11):
+      $\varphi_0(2h)\leq \varepsilon <\varphi_0(3h).
+      $
+      В этом случае полагаем $\widetilde x_1 \defabove 2h$ и дальше остается лишь положить
+      $\widetilde x_2\defabove 3h$. Таким образом, здесь сетка $\widetilde
+      {X}=\{0,2h,3h\}$.
+
+      \section{Заключение}
+      Доказана лемма, позволяющая строить сетку адаптивного типа, которая зависит от заданного числового потока и некоторого положительного параметра $\varepsilon$. Рассмотрен пример построения адаптивной сетки для случая, когда исходная сетка равномерная с положительным шагом.
+
+\newpage
+\renewcommand\refname{Литература}
+\begin{thebibliography}{8}
+
+\bibitem{leb} Лебедев А. С., Лисейкин В. Д., Хакимзянов Г. С. Разработка
+    методов построения адаптивных сеток // Вычислительные технологии. 2002.
+    Т. 7, № 3. С. 29--43.
+\bibitem{ter} Terekhov K., Vassilevski Yu. Two-phase water
+    flooding simu\-la\-tions on dynamic adaptive octree grids with
+    two-point nonlinear fluxes// Russian Journal of Numerical Analysis
+    and Mathematical Modelling. 2013. Vol. 28, No 3. P. 267--288.
+
+\bibitem{mall} Малла С. Вейвлеты в обработке сигналов. М.: Мир, 2005. 671 с.
+
+\bibitem{dem} Демьянович Ю. К. Теория сплайн-всплесков. СПб.: Изд-во \linebreak С.-Петерб. ун-та, 2013. 526 с.
+
+\end{thebibliography}
+
+\end{document}
