@@ -1,19 +1,18 @@
 \documentclass{spisok-article}
      %\usepackage{amssymb}
-     \usepackage{color}
-     \usepackage{amsmath}
-     \usepackage{amscd}
-          \usepackage{textcomp}
-          \usepackage{euscript}
-          
+     %\usepackage{color}
+     %\usepackage{amsmath}
+     %\usepackage{amscd}
+     \usepackage{textcomp}
+     \usepackage{euscript}
+     \usepackage{stmaryrd}
+
 \newtheorem{Lemma}{Лемма}
 
 
 \def\bull{\vrule height.9ex width.8ex depth-.1ex}%square bullet
 
    %\def\defabove{\raise3pt\hbox {${{\lower2pt  \hbox {${\scriptscriptstyle {\rm def}}$}}}  \atop = $}}
-
-\newcommand{\defabove}{\stackrel{\rm def}{=\kern-3.6pt=}}
 
 \def\quaabove{\raise5pt\hbox {${{\lower2pt  \hbox {${\scriptstyle ?}$}}}  \atop \equiv $}}
 
@@ -112,6 +111,14 @@
 
 \begin{document}
 
+\newcommand{\defabove}{\stackrel{\rm def}{=\kern-3.6pt=}}
+
+\newcommand{\textlbrackdblMSTUB}{[\hspace{-2pt}[}
+\newcommand{\textrbrackdblMSTUB}{]\hspace{-2pt}]}
+\newcommand{\textlbrackdblSTUB}{$\textlbrackdblMSTUB$}
+\newcommand{\textrbrackdblSTUB}{$\textrbrackdblMSTUB$}
+
+
 \maketitle
 
 \section{Введение}
@@ -171,31 +178,31 @@
      т.е. для некоторых $i,j\in\mathbb Z$,
     $i+2<j$, верны равенства $a=\xi_i$, $b=\xi_j$. При упомянутых
     $a$ и $b$ введем  обозначение
-     $$\textlbrackdbl $a,b$\textrbrackdbl \defabove\{\xi_s\;|\;a\leq\xi_s\leq
+     $$\textlbrackdblMSTUB a,b \textrbrackdblMSTUB \defabove\{\xi_s\;|\;a\leq\xi_s\leq
      b,\; s\in\mathbb Z\},$$
       т.е.
       
-      \textlbrackdbl$a,b$\textrbrackdbl$\defabove\{\xi_s\;|\;i\leq s\leq j,\;
+      \textlbrackdblSTUB$a,b$\textrbrackdblSTUB$\defabove\{\xi_s\;|\;i\leq s\leq j,\;
       s\in\mathbb Z\}$. Множество
-      \textlbrackdbl$a,b$\textrbrackdbl $\;$ будем называть сеточным
+      \textlbrackdblSTUB$a,b$\textrbrackdblSTUB $\;$ будем называть сеточным
       отрезком.
 
       Рассмотрим линейное нормированное пространство
-      $C$\textlbrackdbl$a,b$\textrbrackdbl$\;$ функций $u(t)$, заданных на
-      сеточном отрезке \textlbrackdbl$a,b$\textrbrackdbl, где
+      $C$\textlbrackdblSTUB$a,b$\textrbrackdblSTUB$\;$ функций $u(t)$, заданных на
+      сеточном отрезке \textlbrackdblSTUB$a,b$\textrbrackdblSTUB, где
       норма вводится соотношением
-      $$\|u\|_{C\hbox{\textlbrackdbl$a,b$\textrbrackdbl}}\defabove
-      \max_{t\in \hbox{\textlbrackdbl$a,b$\textrbrackdbl}}|u(t)|.
+      $$\|u\|_{C\hbox{\textlbrackdblSTUB$a,b$\textrbrackdblSTUB}}\defabove
+      \max_{t\in \hbox{\textlbrackdblSTUB$a,b$\textrbrackdblSTUB}}|u(t)|.
             $$
-    Очевидно, что пространство $C\hbox{\textlbrackdbl$a,b$\textrbrackdbl}$  конечномерно.
+    Очевидно, что пространство $C\hbox{\textlbrackdblSTUB$a,b$\textrbrackdblSTUB}$  конечномерно.
 
    Пусть
   $$\varepsilon\in(\varepsilon^*,\varepsilon^{**}),
    \eqno(3)  $$
   где
-   $$ \varepsilon^*\defabove\max_{\xi\in\hbox{\textlbrackdbl$a,b^-$\textrbrackdbl}}
+   $$ \varepsilon^*\defabove\max_{\xi\in\hbox{\textlbrackdblSTUB$a,b^-$\textrbrackdblSTUB}}
   \max_{t\in \{\xi,\xi^+\}}f(t)(\xi^+-\xi),\quad
-  \varepsilon^{**}\defabove (b-a)\|f\|_{C\hbox{\textlbrackdbl$a,b$\textrbrackdbl}}.
+  \varepsilon^{**}\defabove (b-a)\|f\|_{C\hbox{\textlbrackdblSTUB$a,b$\textrbrackdblSTUB}}.
    \eqno(4)  $$
 
     Справедливо следующее утверждение.
@@ -207,16 +214,16 @@
     <\widetilde{x_1}<\ldots< \widetilde {x_{K}}\leq \widetilde{x_{K+1}}=b
     \eqno(5)    $$
    такие, что
-  $$\max_{t\in\hbox{\rm\textlbrackdbl}\widetilde{x_s},\;
-        \widetilde{x_{s+1}}\hbox{\rm\textrbrackdbl}} f(t)
+  $$\max_{t\in\hbox{\rm\textlbrackdblSTUB}\widetilde{x_s},\;
+        \widetilde{x_{s+1}}\hbox{\rm\textrbrackdblSTUB}} f(t)
     (\widetilde{x_{s+1}}-\widetilde{x_s})\leq\varepsilon
-    <\max_{t\in\hbox{\rm\textlbrackdbl}\widetilde{x_s},\;
-        \widetilde{x^+_{s+1}}\hbox{\rm\textrbrackdbl}} f(t)
+    <\max_{t\in\hbox{\rm\textlbrackdblSTUB}\widetilde{x_s},\;
+        \widetilde{x^+_{s+1}}\hbox{\rm\textrbrackdblSTUB}} f(t)
     (\widetilde{x^+_{s+1}}-\widetilde{x_s})
     \eqno(6)$$
     $$\forall s\in\{0,1,\ldots,K-1\},
     $$
-    $$\max_{t\in\hbox{\rm\textlbrackdbl}\widetilde{x_K},\;b\hbox{\rm\textrbrackdbl}} f(t)
+    $$\max_{t\in\hbox{\rm\textlbrackdblSTUB}\widetilde{x_K},\;b\hbox{\rm\textrbrackdblSTUB}} f(t)
     (b-\widetilde{x_K})\leq\varepsilon,  \quad \widetilde{X}\subset \Xi.
     \eqno(7)$$
     \end{Lemma}
@@ -226,19 +233,19 @@
 База индукции устанавливается следующим образом. Пусть
     переменная $\tau\in\Xi$ увеличивается от $a=\widetilde{x_0}$ до $b$;
     тогда ввиду предположения (1) функция
-    $\phi_0(\tau)\defabove \max_{t\in\hbox{\rm\textlbrackdbl}\widetilde{x_0},\;
-      \tau\hbox{\rm\textrbrackdbl}} f(t)(\tau-\widetilde{x_0})$
+    $\phi_0(\tau)\defabove \max_{t\in\hbox{\rm\textlbrackdblSTUB}\widetilde{x_0},\;
+      \tau\hbox{\rm\textrbrackdblSTUB}} f(t)(\tau-\widetilde{x_0})$
     является строго возрастающей и при изменении $\tau$ от
      $a=\widetilde{x_0}$ к $b$ функция $\phi_0(\tau)$  возрастает от $0$ до
-    $\max_{t\in\hbox{\rm\textlbrackdbl}a,\;b\hbox{\rm\textrbrackdbl}} f(t)(b-a)$.
+    $\max_{t\in\hbox{\rm\textlbrackdblSTUB}a,\;b\hbox{\rm\textrbrackdblSTUB}} f(t)(b-a)$.
     Благодаря условию (3), (4) существует единственная точка $\tau_1\in
-    \hbox{\rm\textlbrackdbl}a,\;b\hbox{\rm\textrbrackdbl}$
+    \hbox{\rm\textlbrackdblSTUB}a,\;b\hbox{\rm\textrbrackdblSTUB}$
     такая, что
-   $$\max_{t\in\hbox{\rm\textlbrackdbl}\widetilde{x_0},\;
-         \tau_1\hbox{\rm\textrbrackdbl}} f(t)
+   $$\max_{t\in\hbox{\rm\textlbrackdblSTUB}\widetilde{x_0},\;
+         \tau_1\hbox{\rm\textrbrackdblSTUB}} f(t)
     (\tau_1-\widetilde{x_0})\leq\varepsilon
-    <\max_{t\in\hbox{\rm\textlbrackdbl}\widetilde{x_0},\;
-        \tau^+_1\hbox{\rm\textrbrackdbl}} f(t)
+    <\max_{t\in\hbox{\rm\textlbrackdblSTUB}\widetilde{x_0},\;
+        \tau^+_1\hbox{\rm\textrbrackdblSTUB}} f(t)
     (\tau^+_1-\widetilde{x_0}).
     $$
 
@@ -250,16 +257,16 @@
     В этом случае построение сетки $\widetilde{X}(f,\varepsilon,\Xi)$ завершено.
     В противном случае $\widetilde x_s<b$,
     и построение сетки продолжается. Рассмотрим функцию
-    $$\phi_s(\tau)\defabove\max_{t\in\hbox{\rm\textlbrackdbl}\widetilde{x_s},\;
-      \tau\hbox{\rm\textrbrackdbl}} f(t)(\tau-\widetilde{x_s});$$
+    $$\phi_s(\tau)\defabove\max_{t\in\hbox{\rm\textlbrackdblSTUB}\widetilde{x_s},\;
+      \tau\hbox{\rm\textrbrackdblSTUB}} f(t)(\tau-\widetilde{x_s});$$
     она  является строго возрастающей: при изменении $\tau$ от
      $\widetilde x_s$ до $b$ функция $\phi_s(\tau)$  возрастает от $0$ до
-    $m_s\defabove\max_{t\in\hbox{\rm\textlbrackdbl}\widetilde{x_s},\;
-      b\hbox{\rm\textrbrackdbl}} f(t)(b-\widetilde{x_s})$.
+    $m_s\defabove\max_{t\in\hbox{\rm\textlbrackdblSTUB}\widetilde{x_s},\;
+      b\hbox{\rm\textrbrackdblSTUB}} f(t)(b-\widetilde{x_s})$.
    Заметим, что если  $\widetilde{x_s}=b^-$, то
    %\newpage
    $$m_s=\max_{t\in\{b^-,b\}}f(t)(b-b^-)\leq
-   \max_{\xi\in\hbox{\textlbrackdbl$a,b^-$\textrbrackdbl}}
+   \max_{\xi\in\hbox{\textlbrackdblSTUB$a,b^-$\textrbrackdblSTUB}}
   \max_{t\in \{\xi,\xi^+\}}f(t)(\xi^+-\xi)=\varepsilon^*,
   $$
   и по предположению (3), (4) имеем $m_s\leq\varepsilon$.
@@ -269,23 +276,23 @@
     что $\widetilde x_s<b^-$. Пусть при
     некоторых  $p,q\in \mathbb Z$ справедливы соотношения
      $\widetilde x_s=\xi_p$ и
-    $m_s= \max_{t\in\hbox{\rm\textlbrackdbl}\widetilde x_s,\;
-      \xi_q\hbox{\rm\textrbrackdbl}} f(t)(\xi_q-\widetilde x_s)$.
+    $m_s= \max_{t\in\hbox{\rm\textlbrackdblSTUB}\widetilde x_s,\;
+      \xi_q\hbox{\rm\textrbrackdblSTUB}} f(t)(\xi_q-\widetilde x_s)$.
       Очевидно, что $p<q$ (равенство
     $p=q$ дает $m_s=0$, что противоречит соотношению
     $\varepsilon<m_s$).
 
     Поскольку $0<\varepsilon<m_s$, а дискретная функция $\phi_s(\tau)$ принимает
     возрастающие значения от $0$   до $m_s$, то найдется такое
-    $j$,  что $\xi_j\in\hbox{\rm\textlbrackdbl}\widetilde x_s,\;
-      b^-\hbox{\rm\textrbrackdbl}$ и $\phi_s(\xi_j)\leq
+    $j$,  что $\xi_j\in\hbox{\rm\textlbrackdblSTUB}\widetilde x_s,\;
+      b^-\hbox{\rm\textrbrackdblSTUB}$ и $\phi_s(\xi_j)\leq
       \varepsilon<\phi_s(\xi_{j+1})$. Последнее эквивалентно
       соотношению
-        $$\max_{t\in\hbox{\rm\textlbrackdbl}\widetilde x_s,\;
-        \xi_j\hbox{\rm\textrbrackdbl}} f(t)
+        $$\max_{t\in\hbox{\rm\textlbrackdblSTUB}\widetilde x_s,\;
+        \xi_j\hbox{\rm\textrbrackdblSTUB}} f(t)
     (\xi_j-\widetilde x_s)\leq\varepsilon
-    <\max_{t\in\hbox{\rm\textlbrackdbl}\widetilde x_s,\;
-        \xi_{j+1}\hbox{\rm\textrbrackdbl}} f(t)
+    <\max_{t\in\hbox{\rm\textlbrackdblSTUB}\widetilde x_s,\;
+        \xi_{j+1}\hbox{\rm\textrbrackdblSTUB}} f(t)
     (\xi_{j+1}-\widetilde x_s).
     $$
 
@@ -315,11 +322,11 @@
    $K(f,\varepsilon\,',\Xi)\geq K(f,\varepsilon\,'',\Xi)$.
 
     Суммированием соотношений (6) получаем неравенство
-      $$\sum_{s=0}^{K-1}\max_{t\in\hbox{\rm\textlbrackdbl}\widetilde x_s,\;
-        \widetilde x_{s+1}\hbox{\rm\textrbrackdbl}} f(t)
+      $$\sum_{s=0}^{K-1}\max_{t\in\hbox{\rm\textlbrackdblSTUB}\widetilde x_s,\;
+        \widetilde x_{s+1}\hbox{\rm\textrbrackdblSTUB}} f(t)
     (\widetilde x_{s+1}-\widetilde x_s)\leq K\varepsilon<$$$$<
-\sum_{s=0}^{K-1}\max_{t\in\hbox{\rm\textlbrackdbl}\widetilde x_s,\;
-        \widetilde x^+_{s+1}\hbox{\rm\textrbrackdbl}} f(t)
+\sum_{s=0}^{K-1}\max_{t\in\hbox{\rm\textlbrackdblSTUB}\widetilde x_s,\;
+        \widetilde x^+_{s+1}\hbox{\rm\textrbrackdblSTUB}} f(t)
     (\widetilde x^+_{s+1}-\widetilde x_s).
     $$
 %\newpage
@@ -331,13 +338,13 @@
     $$a=\xi_0<\xi_1<\xi_2<\xi_3=b,
     $$
     так что рассматриваемый сеточный отрезок имеет вид
-    $\hbox{\rm\textlbrackdbl}a,\;
-      b\hbox{\rm\textrbrackdbl}\defabove
+    $\hbox{\rm\textlbrackdblSTUB}a,\;
+      b\hbox{\rm\textrbrackdblSTUB}\defabove
         \linebreak =\{0,h,2h,3h\}$.
     Таким образом, $a=0$, $b=3h$. Ясно, что при этом выполнено
     условие (2):    $a^+=h<b^-=2h$. В этом случае     имеем
     $$\varepsilon^*=\max\{f(0),f(h),f(2h),f(3h)\}h=
-    \|f\|_{C\hbox{\textlbrackdbl$a,b$\textrbrackdbl}}h,\quad
+    \|f\|_{C\hbox{\textlbrackdblSTUB$a,b$\textrbrackdblSTUB}}h,\quad
     \varepsilon^{**}=3\varepsilon^*.
     \eqno(8)$$
     Условие (3) принимает вид
@@ -345,13 +352,13 @@
     \eqno(9)$$
     В доказательстве леммы 1 сначала рассматривается функция
     $\phi_0$. Здесь она принимает вид
-    $\phi_0(\tau)=\max_{t\in\hbox{\rm\textlbrackdbl}0,\;\tau\hbox{\rm\textrbrackdbl}}
+    $\phi_0(\tau)=\max_{t\in\hbox{\rm\textlbrackdblSTUB}0,\;\tau\hbox{\rm\textrbrackdblSTUB}}
     f(t)\tau$,
     причем ее аргумент $\tau$ пробегает значения
     $0$, $h$, $2h$, $3h$, так что $\phi_0(0)=0$,
     $\phi_0(h)= \linebreak =h\max\{f(0),f(h)\}$,
     $\phi_0(3h)=2h\max\{f(0),f(h),f(2h)\}$,
-    $\phi_0(3h)= $\linebreak $=3h\|f\|_{C\hbox{\textlbrackdbl$a,b$\textrbrackdbl}}$.
+    $\phi_0(3h)= $\linebreak $=3h\|f\|_{C\hbox{\textlbrackdblSTUB$a,b$\textrbrackdblSTUB}}$.
 
     Полагаем $\widetilde x_0\defabove a$,
     т.е. в нашем случае  $\widetilde x_0\defabove 0$.
@@ -362,11 +369,11 @@
         $$\phi_0(\tau)\leq\varepsilon<\phi_0(\tau^+)
       $$
      или, что то же самое, соотношение
-      $$\max_{t\in\hbox{\rm\textlbrackdbl}0,\;
-        \tau\hbox{\rm\textrbrackdbl}} f(t)
+      $$\max_{t\in\hbox{\rm\textlbrackdblSTUB}0,\;
+        \tau\hbox{\rm\textrbrackdblSTUB}} f(t)
     (\tau)\leq\varepsilon
-    <\max_{t\in\hbox{\rm\textlbrackdbl}0,\;
-        \tau+h\hbox{\rm\textrbrackdbl}} f(t)
+    <\max_{t\in\hbox{\rm\textlbrackdblSTUB}0,\;
+        \tau+h\hbox{\rm\textrbrackdblSTUB}} f(t)
     (\tau+h).
     $$
     При  $\tau=0$ это соотношение принимает вид
@@ -376,7 +383,7 @@
     $$\tau=h,\quad \max \{f(0),f(h)\}h\leq\varepsilon< 2h\max    \{f(0),f(h),f(2h)\},
     \eqno(10)$$
     %\newpage
-    $$\tau=2h,\quad 2h\max \{f(0),f(h),f(2h)\}\leq\varepsilon< 3h\|f\|_{C\hbox{\textlbrackdbl$a,b$\textrbrackdbl}}.
+    $$\tau=2h,\quad 2h\max \{f(0),f(h),f(2h)\}\leq\varepsilon< 3h\|f\|_{C\hbox{\textlbrackdblSTUB$a,b$\textrbrackdblSTUB}}.
     \eqno(11)    $$
 
     Если верно соотношение  (10), то согласно (6)  следует положить
@@ -384,14 +391,14 @@
     \eqno(12)    $$
      и перейти к отысканию $\widetilde x_2$. Для этого рассмотрим
      функцию $\phi_1(\tau)= \linebreak =
-    \max_{t\in\hbox{\rm\textlbrackdbl}\widetilde x_1,\;\tau\hbox{\rm\textrbrackdbl}}
+    \max_{t\in\hbox{\rm\textlbrackdblSTUB}\widetilde x_1,\;\tau\hbox{\rm\textrbrackdblSTUB}}
     f(t)(\tau-\widetilde x_1)$.
     Заметим, что
     $$\phi_1(h)=0,\quad
-    \phi_1(2h)=h\max_{t\in\hbox{\rm\textlbrackdbl}h,\;2h\hbox{\rm\textrbrackdbl}}
+    \phi_1(2h)=h\max_{t\in\hbox{\rm\textlbrackdblSTUB}h,\;2h\hbox{\rm\textrbrackdblSTUB}}
     f(t)=h\max\{f(h),f(2h)\},
     \eqno(13)    $$
-    $$\phi_1(3h)=2h\max_{t\in\hbox{\rm\textlbrackdbl}h,\;3h\hbox{\rm\textrbrackdbl}}
+    $$\phi_1(3h)=2h\max_{t\in\hbox{\rm\textlbrackdblSTUB}h,\;3h\hbox{\rm\textrbrackdblSTUB}}
     f(t)=2h\max\{f(h),f(2h),f(3h)\}.
     \eqno(14)    $$
 
@@ -425,7 +432,7 @@
     рассматриваемом случае оно принимает вид
     %\newpage
      $$2h\max\{f(h),f(2h),f(3h)\}\leq \varepsilon<
-     3h\|f\|_{C\hbox{\textlbrackdbl$a,b$\textrbrackdbl}},
+     3h\|f\|_{C\hbox{\textlbrackdblSTUB$a,b$\textrbrackdblSTUB}},
         $$
      и потому полагаем $\widetilde x_2\defabove 3h$.
      
