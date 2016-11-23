@@ -2,6 +2,7 @@
 heads:
   - name: Граничин Олег Николаевич
     title: д.ф.-м.н., профессор кафедры системного программирования СПбГУ
+    photo: http://spisok.math.spbu.ru/2016/images/people/Granitchin.jpg
 ready: 1
 articles:
   - title: Рандомизированный алгоритм при обработке данных ультразвуковых исследований

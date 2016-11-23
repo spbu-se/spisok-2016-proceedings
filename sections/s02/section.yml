@@ -2,8 +2,10 @@
 heads:
   - name: Косовский Николай Кириллович
     title: д.ф.-м.н., профессор кафедры информатики
+    photo: http://spisok.math.spbu.ru/2016/images/people/Kossovski.jpg
   - name: Герасимов Михаил Александрович
     title: к.ф.-м.н., доцент кафедры информатики
+    photo: http://spisok.math.spbu.ru/2016/images/people/Gerasimov.jpg
 ready: 1
 articles:
   - title: Одно обобщение алгоритма Шеннона-Фано для кодирования дискретных множеств сообщений
