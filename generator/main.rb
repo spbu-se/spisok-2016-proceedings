@@ -4,4 +4,4 @@ require './metadata.rb'
 
 sections = load_all_sections
 
-# sections.each &method(:p)
+sections.each &method(:p)
