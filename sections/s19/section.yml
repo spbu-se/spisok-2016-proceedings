@@ -2,10 +2,10 @@
 heads:
   - name: Молдовян Александр Андреевич
     title: д.т.н., профессор, зам. директора СПИИРАН по информационной безопасности
-    photo: http://spisok.math.spbu.ru/2016/images/people/Moldovjan.jpg
+    photo: Moldovjan.jpg
   - name: Фахрутдинов Роман Шафкатович
     title: к.т.н., заведующий лабораторией безопасности информационных систем СПИИРАН
-    photo: http://spisok.math.spbu.ru/2016/images/people/Fakhrutdinov.jpg
+    photo: Fakhrutdinov.jpg
 ready: 1
 articles:
   - by: Лозов П.А.
