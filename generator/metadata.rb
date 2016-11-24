@@ -2,19 +2,60 @@
 
 require 'yaml'
 
-class Article
-end
+class Chairman
+  attr_reader :name, :photo, :title
 
-class Section
-  def initialize(folder)
-    secdic = YAML::load_file(File.join(folder, 'section.yml'))
+  def initialize(chdic, sec)
+    @section = sec
+    @name = chdic['name']
+    @photo = chdic['photo']
+    @title = chdic['title']
   end
 end
 
+class Article
+  attr_reader :section, :title, :by, :file, :fullfile, :articles, :pagescount
+
+  def getpagescount
+    output = `pdftk #{@fullfile} dump_data`
+    /NumberOfPages:\s+(?<npages>\d+)/ =~ output
+    if npages
+      npages.to_i
+    else
+      raise "No number of pages in #{@fullfile}"
+      -1
+    end
+  end
+  def initialize(ardic, sec)
+    @section = sec
+    @title = ardic['title']
+    @by = ardic['by']
+    @file = ardic['file']
+    @fullfile = File::join(sec.folder, @file)
+    @pagescount = self.getpagescount
+  end
+end
+
+class Section
+  attr_reader :folder, :name, :ready, :heads, :articles
+
+  def initialize(secdic, folder)
+    @folder = folder
+    @name = secdic['name']
+    @ready = secdic['ready']
+    @heads = secdic['heads'].map { |h| Chairman::new(h, self) }
+    @articles =
+      if secdic.has_key?('articles')
+        secdic['articles'].map { |a| Article::new(a, self) }
+      else
+        []
+      end
+  end
+end
 
 def load_all_sections
-  sectionfolders = Dir.glob(File.join(File.dirname(File.expand_path(__FILE__)), "../sections/*")).select(&File::method(:directory?))
+  sectionfolders = Dir::glob(File::join(File::dirname(File::expand_path(__FILE__)), "../sections/*")).select(&File::method(:directory?))
   sections = sectionfolders.map do |f|
-    Section.new f
+    Section::new(YAML::load_file(File::join(f, 'section.yml')), f)
   end
 end
