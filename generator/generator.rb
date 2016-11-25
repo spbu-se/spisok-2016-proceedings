@@ -5,7 +5,7 @@
 class Section
   def maketex(start_page)
 
-    emptypage = "\\thispagestyle{empty}\\mbox{}\\newpage"
+    emptypage = "\\mbox{}\\newpage"
 
     chairman_texs = @heads.map do |h|
       <<~HEAD_TEMPLATE
@@ -24,20 +24,30 @@ class Section
 
       #{chairman_texs.join "\n\n\\vspace{5mm}"}
       \\end{center}
+      \\newpage
       TT_OERLAY_TEMPLATE
+      + emptypage
 
     cur_page = start_page + 2
 
     articles_tex = @articles.map do |a|
       a.start_page = cur_page
+      ocp = cur_page
       cur_page += 1
-      emptypage + "\n" + (2..a.pagescount).map do |p|
+      "\\renewcommand{\\headrulewidth}{0pt}" +
+      if ocp.odd? then
+        %(\\thispagestyle{fancy}\\fancyhf{}\\lhead{}\\rhead{#{ocp}})
+      else
+        %(\\thispagestyle{fancy}\\fancyhf{}\\lhead{#{ocp}}\\rhead{})
+      end +
+      "\\mbox{}\\newpage\\renewcommand{\\headrulewidth}{0.4pt}\n" +
+      (2..a.pagescount).map do |p|
         ocp = cur_page
         cur_page += 1
-        if ocp.odd?
-          %(\\thispagestyle{fancy}\\fancyhf{}\\lhead{#{@name}}\\rhead{#{ocp}})
+        if ocp.odd? then
+          %(\\thispagestyle{fancy}\\fancyhf{}\\lhead{#{@name}}\\rhead{~~#{ocp}})
         else
-          %(\\thispagestyle{fancy}\\fancyhf{}\\lhead{#{ocp}}\\rhead{#{a.title}})
+          %(\\thispagestyle{fancy}\\fancyhf{}\\lhead{#{ocp}~~}\\rhead{#{a.title}})
         end + '\mbox{}\newpage'
       end.join("\n")
     end.join("\n\n")
@@ -114,7 +124,7 @@ class Section
           xelatex _section-overlay.tex
 
           pdftk #{pdfs.join ' '} cat output _section-articles.pdf
-          pdftk _section-articles.pdf multistamp _section-overlay.pdf output _section_#{File::basename(@folder)}.pdf
+          pdftk _section-articles.pdf multistamp _section-overlay.pdf output _section--#{File::basename(@folder)}.pdf
 
           COMPILE
       end
