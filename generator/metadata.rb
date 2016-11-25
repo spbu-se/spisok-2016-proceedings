@@ -15,6 +15,7 @@ end
 
 class Article
   attr_reader :section, :title, :by, :file, :fullfile, :articles, :pagescount
+  attr_accessor :start_page
 
   def getpagescount
     output = `pdftk #{@fullfile} dump_data`
@@ -33,6 +34,7 @@ class Article
     @file = ardic['file']
     @fullfile = File::join(sec.folder, @file)
     @pagescount = self.getpagescount
+    @start_page = -1
   end
 end
 

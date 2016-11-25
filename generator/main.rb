@@ -5,4 +5,8 @@ require './generator.rb'
 
 sections = load_all_sections
 
-sections.each &method(:p)
+cpage = 5
+
+sections.each do |s|
+  cpage = s.maketex(cpage)
+end
