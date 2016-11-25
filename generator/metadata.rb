@@ -24,7 +24,7 @@ class Article
       npages.to_i
     else
       raise "No number of pages in #{@fullfile}"
-      -1
+      nil
     end
   end
   def initialize(ardic, sec)
@@ -34,12 +34,13 @@ class Article
     @file = ardic['file']
     @fullfile = File::join(sec.folder, @file)
     @pagescount = self.getpagescount
-    @start_page = -1
+    @start_page = nil
   end
 end
 
 class Section
   attr_reader :folder, :name, :ready, :heads, :articles
+  attr_accessor :start_page
 
   def initialize(secdic, folder)
     @folder = folder

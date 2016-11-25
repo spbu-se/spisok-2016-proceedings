@@ -1,10 +1,8 @@
 #!/usr/bin/env ruby
 
-# nothing here
-
 class Section
   def maketex(start_page)
-
+    @start_page = start_page
     emptypage = "\\mbox{}\\newpage"
 
     chairman_texs = @heads.map do |h|
