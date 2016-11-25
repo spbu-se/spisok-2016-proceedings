@@ -26,46 +26,25 @@ class Section
       \\end{center}
       TT_OERLAY_TEMPLATE
 
-    page_pairs = <<~PP_TEMPLATE
-      \\thispagestyle{fancy}\\fancyhf{}
-      \\lhead{4}\\rhead{Share\\LaTeX}
-      \\mbox{}\\newpage
-
-      \\thispagestyle{fancy}\\fancyhf{}
-      \\lhead{Guides and tutorials}\\rhead{5}
-      \\mbox{}\\newpage
-      PP_TEMPLATE
-
     cur_page = start_page + 2
 
     articles_tex = @articles.map do |a|
       a.start_page = cur_page
       cur_page += 1
-      %(
-        \\thispagestyle{empty}
-        \\noindent\\begin{picture}(148,210)
-        \\put(-17,23){\\hbox{\\includegraphics[width=148mm,page=1]{#{a.fullfile}}}}
-        \\end{picture}
-        \\newpage
-      ) +
-      (2..a.pagescount).map do |p|
+      emptypage + "\n" + (2..a.pagescount).map do |p|
         ocp = cur_page
         cur_page += 1
         if ocp.odd?
           %(\\thispagestyle{fancy}\\fancyhf{}\\lhead{#{@name}}\\rhead{#{ocp}})
         else
           %(\\thispagestyle{fancy}\\fancyhf{}\\lhead{#{ocp}}\\rhead{#{a.title}})
-        end +
-        %(
-          \\noindent\\begin{picture}(148,210)
-          \\put(-17,28){\\hbox{\\includegraphics[width=148mm,page=#{p}]{#{a.fullfile}}}}
-          \\end{picture}
-          \\newpage
-        )        
+        end + '\mbox{}\newpage'
       end.join("\n")
     end.join("\n\n")
 
-    finalemptypage = if cur_page.even? then # last is odd
+    add_empty = cur_page.even?
+
+    finalemptypage = if add_empty then # last is odd
       cur_page += 1
       emptypage
     else
@@ -107,30 +86,38 @@ class Section
       
       \\usepackage[top=23mm,left=17mm,right=17mm,bottom=17mm]{geometry}     
       \\usepackage[font=small,skip=0pt]{caption}
-      \\usepackage[pages=some,opacity=1,position={0,0}]{background}     
       \\usepackage{fancyhdr}
       
-      \\setlength{\\unitlength}{1mm}
+      \\pagestyle{empty}
       \\begin{document}
-
-      \\newcommand\\backimage[2]{\\BgThispage{}\\backgroundsetup{contents={\\includegraphics[#1]{#2}}}}
-      
-      \\thispagestyle{empty}
       #{titletex}
-      \\mbox{}\\newpage
       
       #{emptypage}
       
       #{articles_tex}
       
-      #{finalemptypage}
-      
+      #{finalemptypage}     
       \\end{document}
       SEC_TEMPLATE
 
-      File::open(File::join(@folder, "section.tex"), "w:UTF-8") do |f| 
+      File::open(File::join(@folder, "_section-overlay.tex"), "w:UTF-8") do |f|
         f.write section_tex 
-      end 
+      end
+
+      File::open(File::join(@folder, "_section-compile.sh"), "w:UTF-8") do |f|
+        pdfs = ['../../generator/a5-empty.pdf'] * 2 +
+          @articles.map { |a| File::basename(a.fullfile) } +
+          if add_empty then ['../../generator/a5-empty.pdf'] else [] end
+        f.write <<~COMPILE
+          #!/bin/sh
+          xelatex _section-overlay.tex
+          xelatex _section-overlay.tex
+
+          pdftk #{pdfs.join ' '} cat output _section-articles.pdf
+          pdftk _section-articles.pdf multistamp _section-overlay.pdf output _section_#{File::basename(@folder)}.pdf
+
+          COMPILE
+      end
 
       cur_page
   end
