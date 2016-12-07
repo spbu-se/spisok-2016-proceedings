@@ -9,7 +9,7 @@ class Section
       <<~HEAD_TEMPLATE
       \\vspace{5mm}
       \\includegraphics[height=5cm]{../../portraits/#{h.photo}}\\\\
-      \\vspace{5mm}
+      \\vspace{2mm}
       {\\Large \\textbf{\\textsf{#{h.name}}}}\\\\
       \\textsf{#{h.title}}
 
