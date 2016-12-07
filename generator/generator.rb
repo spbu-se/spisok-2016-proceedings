@@ -32,13 +32,13 @@ class Section
       a.start_page = cur_page
       ocp = cur_page
       cur_page += 1
-      "\\renewcommand{\\headrulewidth}{0pt}" +
+      "\\renewcommand{\\headrulewidth}{0pt}\\newgeometry{margin=15mm,top=25mm}\\resetHeadWidth" +
       if ocp.odd? then
         %(\\thispagestyle{fancy}\\fancyhf{}\\lhead{}\\rhead{#{ocp}})
       else
         %(\\thispagestyle{fancy}\\fancyhf{}\\lhead{#{ocp}}\\rhead{})
       end +
-      "\\mbox{}\\newpage\\renewcommand{\\headrulewidth}{0.4pt}\n" +
+      "\\mbox{}\\newpage\\renewcommand{\\headrulewidth}{0.4pt}\\restoregeometry\\resetHeadWidth\n" +
       (2..a.pagescount).map do |p|
         ocp = cur_page
         cur_page += 1
@@ -95,6 +95,11 @@ class Section
       \\usepackage[top=23mm,left=17mm,right=17mm,bottom=17mm]{geometry}     
       \\usepackage[font=small,skip=0pt]{caption}
       \\usepackage{fancyhdr}
+
+      \\makeatletter
+      \\newcommand{\\resetHeadWidth}{\\fancy@setoffs}
+      \\makeatother
+
       
       \\pagestyle{empty}
       \\begin{document}
