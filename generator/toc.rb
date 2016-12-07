@@ -2,9 +2,9 @@
 
 def gen_toc(sections, toctitle)
   toc = sections.map do |s|
-    "\\noindent\\textbf{#{s.name}} \\dotfill{} #{s.start_page}\\newline\n" +
+    "\\contentsline{section}{#{s.name}}{#{s.start_page}}{}\n" +
     s.articles.map do |a|
-      "#{a.by}#{if not a.by.end_with?('.') then '.' else '' end}~#{a.title} \\dotfill{} #{a.start_page}\\newline"
+      "\\contentsline{subsection}{#{a.by}#{if not a.by.end_with?('.') then '.' else '' end}~#{a.title}}{#{a.start_page}}{}"
     end.join("\n")
   end.join("\n\n")
 
@@ -44,6 +44,11 @@ def gen_toc(sections, toctitle)
     \\usepackage[top=17mm,left=17mm,right=17mm,bottom=17mm]{geometry}
     \\usepackage[font=small,skip=0pt]{caption}
     \\usepackage{fancyhdr}
+
+    \\usepackage{tocloft}
+    \\setlength{\\cftsecnumwidth}{0pt}
+    \\setlength{\\cftsubsecnumwidth}{0pt}
+
 
     \\pagestyle{empty}
     \\begin{document}
