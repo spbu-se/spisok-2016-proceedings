@@ -124,6 +124,8 @@ class Section
           pdftk #{pdfs.join ' '} cat output _section-articles.pdf
           pdftk _section-articles.pdf multistamp _section-overlay.pdf output _section--#{File::basename(@folder)}.pdf
 
+          mv _section--#{File::basename(@folder)}.pdf ..
+
           COMPILE
       end
 
