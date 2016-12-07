@@ -6,7 +6,7 @@ heads:
   - name: Голяндина Нина Эдуардовна
     title: к.ф.-м.н., доцент кафедры статистического моделирования
     photo: Goljandina.jpg
-ready: 1
+status: true
 comment:
 articles:
   - title: Марковские свойства преобразования «Book Stack»

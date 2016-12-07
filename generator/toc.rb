@@ -3,6 +3,7 @@
 def gen_toc(sections, toctitle)
   toc = sections.map do |s|
     "\\contentsline{section}{#{s.name}}{#{s.start_page}}{}\n" +
+    if s.status == true then '' else "{\\color{red}~#{s.status}}\n" end +
     s.articles.map do |a|
       "\\contentsline{subsection}{#{a.by}#{if not a.by.end_with?('.') then '.' else '' end}~#{a.title}}{#{a.start_page}}{}"
     end.join("\n")
@@ -36,10 +37,7 @@ def gen_toc(sections, toctitle)
     \\usepackage{booktabs}
     \\usepackage{indentfirst}
     \\usepackage{titlesec}
-    \\usepackage{graphicx}
     \\usepackage[table,xcdraw]{xcolor}
-    \\usepackage{listings}
-    \\usepackage{makecell}
 
     \\usepackage[top=17mm,left=17mm,right=17mm,bottom=17mm]{geometry}
     \\usepackage[font=small,skip=0pt]{caption}

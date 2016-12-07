@@ -39,16 +39,16 @@ class Article
 end
 
 class Section
-  attr_reader :folder, :name, :ready, :heads, :articles
+  attr_reader :folder, :name, :status, :heads, :articles
   attr_accessor :start_page
 
   def initialize(secdic, folder)
     @folder = folder
     @name = secdic['name']
-    @ready = secdic['ready']
+    @status = secdic['status']
     @heads = secdic['heads'].map { |h| Chairman::new(h, self) }
     @articles =
-      if secdic.has_key?('articles')
+      if secdic.has_key?('articles') and secdic['articles'] then
         secdic['articles'].map { |a| Article::new(a, self) }
       else
         []
