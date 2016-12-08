@@ -10,7 +10,7 @@ def gen_toc(sections, toctitle)
     "\\contentsline{section}{#{s.name}}{#{s.start_page}}{}\n" +
     if s.status == true then '' else "{\\color{red}~#{s.status}}\n" end +
     s.articles.map do |a|
-      "\\contentsline{subsection}{#{a.by}#{if not a.by.end_with?('.') then '.' else '' end}~#{a.title}}{#{a.start_page}}{}"
+      "\\contentsline{subsection}{\\textbf{#{a.by}#{if not a.by.end_with?('.') then '.' else '' end}}~#{a.title}}{#{a.start_page}}{}"
     end.join("\n")
   end.join("\n\n")
 
