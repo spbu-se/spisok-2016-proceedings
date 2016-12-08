@@ -1,7 +1,12 @@
 #!/usr/bin/env ruby
 
 def gen_toc(sections, toctitle)
+  draft_page_numbers_warned = false
   toc = sections.map do |s|
+    if s.status == true or draft_page_numbers_warned then '' else
+      draft_page_numbers_warned = true
+      "\\noindent{\\color{red}~Внимание! Номера страниц ниже могут измениться.}\n\n"
+    end +
     "\\contentsline{section}{#{s.name}}{#{s.start_page}}{}\n" +
     if s.status == true then '' else "{\\color{red}~#{s.status}}\n" end +
     s.articles.map do |a|

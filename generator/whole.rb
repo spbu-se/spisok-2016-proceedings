@@ -14,7 +14,8 @@ def gen_whole(sections)
       xelatex _toc.tex
       xelatex _toc.tex
 
-      pdftk *.pdf cat output spisok-2016.pdf
+      rm spisok.pdf
+      pdftk *.pdf cat output spisok.pdf
       TOC
   end
 end
