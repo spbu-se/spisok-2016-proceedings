@@ -3,7 +3,7 @@ heads:
   - name: Шалыто Анатолий Абрамович
     title: д.т.н., профессор, заведующий кафедрой технологии программирования СПбГУ ИТМО
     photo: Shalyto.jpg
-status: Один файл http://spisok.math.spbu.ru/2016/txt/papers/s15_7_4.zip нулевой длины
+status: Один файл \texttt{http://spisok.math.spbu.ru{}/2016{}/txt{}/papers{}/s15\_7\_4.zip} нулевой длины
 articles:
   - by:    Павлов В.А., Дюрдева П.С., Шалымов Д.С.
     title: Enhancement of similarity measure during comparing feature relation graphs (FRG)
