@@ -3,6 +3,7 @@
 require './metadata.rb'
 require './generator.rb'
 require './toc.rb'
+require './whole.rb'
 
 sections = load_all_sections
 
@@ -13,3 +14,5 @@ sections.each do |s|
 end
 
 gen_toc(sections, "Содержание")
+
+gen_whole(sections)

@@ -24,7 +24,8 @@ class Section
       \\end{center}
       \\newpage
       TT_OERLAY_TEMPLATE
-      + emptypage
+
+    warning = if @status == true then '' else "{\\Huge \\color{red}~#{@status}}\n" end
 
     cur_page = start_page + 2
 
@@ -104,6 +105,8 @@ class Section
       \\pagestyle{empty}
       \\begin{document}
       #{titletex}
+
+      #{warning}
       
       #{emptypage}
       
