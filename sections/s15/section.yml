@@ -3,7 +3,7 @@ heads:
   - name: Шалыто Анатолий Абрамович
     title: д.т.н., профессор, заведующий кафедрой технологии программирования СПбГУ ИТМО
     photo: Shalyto.jpg
-status: Один файл \texttt{http://spisok.math.spbu.ru{}/2016{}/txt{}/papers{}/s15\_7\_4.zip} нулевой длины
+status: true
 articles:
   - by:    Павлов В.А., Дюрдева П.С., Шалымов Д.С.
     title: Enhancement of similarity measure during comparing feature relation graphs (FRG)
@@ -17,9 +17,9 @@ articles:
   - by:    Раков И.С., Коковцев Д.Г.
     title: Оптимизация протокола сериализации объектов в трейдинговых системах на основе собираемой в runtime статистики
     file:  s15_14_4.pdf
-#  - by:    Сергушичев А.А.
-#    title: Алгоритм для быстрого анализа перепредставленности генов
-#    file:  s15_7_4.zip
+  - by:    Сергушичев А.А.
+    title: Алгоритм для быстрого анализа перепредставленности генов
+    file:  s15_7_4.zip
   - by:    Казаков С.В., Шалыто А.А.
     title: Сборка генома de novo на персональном компьютере
     file:  s15_5_3.pdf
