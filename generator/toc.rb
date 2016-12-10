@@ -7,15 +7,15 @@ def gen_toc(sections, toctitle)
       draft_page_numbers_warned = true
       "\\noindent{\\color{red}~Внимание! Номера страниц ниже могут измениться.}\n\n"
     end +
-    "\\contentsline{section}{#{s.name}}{#{s.start_page}}{}\n" +
+    "\\contentsline{section}{#{s.name}}{\\hyperlink{abspage.#{s.start_page}}{#{s.start_page}}}{}\n" +
     if s.status == true then '' else "{\\color{red}~#{s.status}}\n" end +
     s.articles.map do |a|
-      "\\contentsline{subsection}{\\textbf{#{a.by}#{if not a.by.end_with?('.') then '.' else '' end}}~#{a.title}}{#{a.start_page}}{}"
+      "\\contentsline{subsection}{\\textbf{#{a.by}#{if not a.by.end_with?('.') then '.' else '' end}}~#{a.title}}{\\hyperlink{abspage.#{a.start_page}}{#{a.start_page}}}{}"
     end.join("\n")
   end.join("\n\n")
 
   section_tex = <<~SEC_TEMPLATE
-    \\documentclass[10pt,a5paper]{article}
+    \\documentclass[10pt,a5paper,twoside]{article}
 
     \\usepackage{mathspec}
     \\usepackage{fontspec}
@@ -37,16 +37,9 @@ def gen_toc(sections, toctitle)
     \\setdefaultlanguage{russian}
     \\setotherlanguages{english}
 
-    \\usepackage[unicode]{hyperref}
-    \\usepackage{authblk}
-    \\usepackage{booktabs}
-    \\usepackage{indentfirst}
-    \\usepackage{titlesec}
+    \\usepackage[unicode,colorlinks=false]{hyperref}
     \\usepackage[table,xcdraw]{xcolor}
-
     \\usepackage[top=17mm,left=17mm,right=17mm,bottom=17mm]{geometry}
-    \\usepackage[font=small,skip=0pt]{caption}
-    \\usepackage{fancyhdr}
 
     \\usepackage{tocloft}
     \\setlength{\\cftsecnumwidth}{0pt}
@@ -59,7 +52,11 @@ def gen_toc(sections, toctitle)
     {\\Large \\textbf{#{toctitle}}}
     \\end{center}
 
+    \\hypersetup{hidelinks}
+
     #{toc}
+
+    \\cleardoublepage
     \\end{document}
     SEC_TEMPLATE
 

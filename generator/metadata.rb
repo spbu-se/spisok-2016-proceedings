@@ -39,11 +39,13 @@ class Article
 end
 
 class Section
-  attr_reader :folder, :name, :status, :heads, :articles
+  attr_reader :folder, :foldername, :pdfname, :name, :status, :heads, :articles
   attr_accessor :start_page
 
   def initialize(secdic, folder)
     @folder = folder
+    @foldername = File::basename folder
+    @pdfname = "_section--#{@foldername}.pdf"
     @name = secdic['name']
     @status = secdic['status']
     @heads = secdic['heads'].map { |h| Chairman::new(h, self) }

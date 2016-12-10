@@ -10,12 +10,12 @@ def gen_whole(sections)
         popd
         SPP
     end
+
     f.puts <<~TOC
       xelatex _toc.tex
       xelatex _toc.tex
 
-      rm spisok.pdf
-      pdftk *.pdf cat output spisok.pdf
+      pdftk _a_begin.pdf #{sections.map {|s| s.pdfname}.join(' ')} _toc.pdf _z_end.pdf cat output spisok.pdf
       TOC
   end
 end

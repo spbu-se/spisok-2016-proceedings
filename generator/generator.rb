@@ -18,6 +18,8 @@ class Section
 
     titletex = <<~TT_OERLAY_TEMPLATE
       \\begin{center}
+      \\pdfbookmark[1]{#{@name}}{abspage.#{start_page}}
+
       {\\huge \\textbf{\\textsf{#{@name}}}}
 
       #{chairman_texs.join "\n\n\\vspace{5mm}"}
@@ -39,6 +41,7 @@ class Section
       else
         %(\\thispagestyle{fancy}\\fancyhf{}\\lhead{#{ocp}}\\rhead{})
       end +
+      "\\pdfbookmark[2]{#{a.title}}{abspage.#{ocp}}\n" +
       "\\mbox{}\\newpage\\renewcommand{\\headrulewidth}{0.4pt}\\restoregeometry\\resetHeadWidth\n" +
       (2..a.pagescount).map do |p|
         ocp = cur_page
@@ -130,9 +133,9 @@ class Section
           xelatex _section-overlay.tex
 
           pdftk #{pdfs.join ' '} cat output _section-articles.pdf
-          pdftk _section-articles.pdf multistamp _section-overlay.pdf output _section--#{File::basename(@folder)}.pdf
+          pdftk _section-articles.pdf multistamp _section-overlay.pdf output #{@pdfname}
 
-          mv _section--#{File::basename(@folder)}.pdf ..
+          mv #{@pdfname} ..
 
           COMPILE
       end
