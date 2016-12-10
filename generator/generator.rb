@@ -18,7 +18,7 @@ class Section
 
     titletex = <<~TT_OERLAY_TEMPLATE
       \\begin{center}
-      \\pdfbookmark[1]{#{@name}}{abspage.#{start_page}}
+      \\pdfbookmark[1]{#{@name}}{abspage-#{start_page}}
 
       {\\huge \\textbf{\\textsf{#{@name}}}}
 
@@ -41,7 +41,7 @@ class Section
       else
         %(\\thispagestyle{fancy}\\fancyhf{}\\lhead{#{ocp}}\\rhead{})
       end +
-      "\\pdfbookmark[2]{#{a.title}}{abspage.#{ocp}}\n" +
+      "\\pdfbookmark[2]{#{a.title}}{abspage-#{ocp}}\n" +
       "\\mbox{}\\newpage\\renewcommand{\\headrulewidth}{0.4pt}\\restoregeometry\\resetHeadWidth\n" +
       (2..a.pagescount).map do |p|
         ocp = cur_page
