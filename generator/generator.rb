@@ -133,7 +133,7 @@ class Section
           xelatex _section-overlay.tex
 
           pdftk #{pdfs.join ' '} cat output _section-articles.pdf
-          pdftk _section-articles.pdf multistamp _section-overlay.pdf output #{@pdfname}
+          pdftk _section-overlay.pdf multibackground _section-articles.pdf output #{@pdfname}
 
           mv #{@pdfname} ..
 
