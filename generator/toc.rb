@@ -7,7 +7,7 @@ def gen_toc(sections, toctitle)
       draft_page_numbers_warned = true
       "\\noindent{\\color{red}~Внимание! Номера страниц ниже могут измениться.}\n\n"
     end +
-    "\\contentsline{section}{#{s.name}}{\\hyperlink{abspage-#{s.start_page}.1}{#{s.start_page}}}{}\n" +
+    "\\contentsline{section}{#{s.name}}{\\hyperlink{abspage-#{s.start_page}.1}{#{s.start_page}}}{}\\nopagebreak[4]\n" +
     if s.status == true then '' else "{\\color{red}~#{s.status}}\n" end +
     s.articles.map do |a|
       "\\contentsline{subsection}{\\textbf{#{a.by}#{if not a.by.end_with?('.') then '.' else '' end}}~#{a.title}}{\\hyperlink{abspage-#{a.start_page}.2}{#{a.start_page}}}{}"
