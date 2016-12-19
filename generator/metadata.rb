@@ -39,15 +39,16 @@ class Article
 end
 
 class Section
-  attr_reader :folder, :foldername, :pdfname, :name, :status, :heads, :articles
+  attr_reader :folder, :foldername, :pdfname, :name, :status, :heads, :articles, :confname
   attr_accessor :start_page
 
-  def initialize(secdic, folder)
+  def initialize(secdic, folder, confname)
     @folder = folder
     @foldername = File::basename folder
     @pdfname = "_section--#{@foldername}.pdf"
     @name = secdic['name']
     @status = secdic['status']
+    @confname = confname
     @heads = secdic['heads'].map { |h| Chairman::new(h, self) }
     @articles =
       if secdic.has_key?('articles') and secdic['articles'] then
@@ -58,9 +59,9 @@ class Section
   end
 end
 
-def load_all_sections
+def load_all_sections(confname)
   sectionfolders = Dir[File::join(File::dirname(File::expand_path(__FILE__)), "../sections/*")].select(&File::method(:directory?))
   sections = sectionfolders.map do |f|
-    Section::new(YAML::load_file(File::join(f, 'section.yml')), f)
+    Section::new(YAML::load_file(File::join(f, 'section.yml')), f, confname)
   end
 end
