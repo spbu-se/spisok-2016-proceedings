@@ -47,9 +47,9 @@ class Section
         ocp = cur_page
         cur_page += 1
         if ocp.odd? then
-          %(\\thispagestyle{fancy}\\fancyhf{}\\lhead{#{@name}}\\rhead{~~#{ocp}})
+          %(\\thispagestyle{fancy}\\fancyhf{}\\lhead{\\truncate{4.25in}{#{@name}}}\\rhead{~~#{ocp}})
         else
-          %(\\thispagestyle{fancy}\\fancyhf{}\\lhead{#{ocp}~~}\\rhead{#{a.title}})
+          %(\\thispagestyle{fancy}\\fancyhf{}\\lhead{#{ocp}~~}\\rhead{\\truncate{4.25in}{#{a.title}}})
         end + '\mbox{}\newpage'
       end.join("\n")
     end.join("\n\n")
@@ -95,6 +95,7 @@ class Section
       \\usepackage[table,xcdraw]{xcolor}
       \\usepackage{listings}
       \\usepackage{makecell}
+      \\usepackage[fit,breakall]{truncate}
       
       \\usepackage[top=23mm,left=17mm,right=17mm,bottom=17mm]{geometry}     
       \\usepackage[font=small,skip=0pt]{caption}
