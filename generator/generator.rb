@@ -10,7 +10,7 @@ class Section
       \\vspace{5mm}
       \\includegraphics[height=5cm]{../../portraits/#{h.photo}}\\\\
       \\vspace{2mm}
-      {\\Large \\textbf{\\textsf{#{h.name}}}}\\\\
+      {\\large \\textbf{\\textsf{#{h.name}}}}\\\\
       \\textsf{#{h.title}}
 
       HEAD_TEMPLATE
@@ -20,7 +20,7 @@ class Section
       \\begin{center}
       \\pdfbookmark[1]{#{@name}}{abspage-#{start_page}}
 
-      {\\huge \\textbf{\\textsf{#{@name}}}}
+      {\\Large \\textbf{\\textsf{#{@name}}}}
 
       #{chairman_texs.join "\n\n\\vspace{5mm}"}
       \\end{center}
