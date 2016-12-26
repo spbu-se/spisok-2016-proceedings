@@ -47,9 +47,9 @@ class Section
         ocp = cur_page
         cur_page += 1
         if ocp.odd? then
-          %(\\thispagestyle{fancy}\\fancyhf{}\\lhead{\\truncate{4.25in}{\\footnotesize #{@confname}}}\\rhead{~~#{ocp}})
+          %(\\thispagestyle{fancy}\\fancyhf{}\\lhead{\\truncate{4.25in}{\\footnotesize #{a.title}}}\\rhead{~~#{ocp}})
         else
-          %(\\thispagestyle{fancy}\\fancyhf{}\\lhead{#{ocp}~~}\\rhead{\\truncate{4.25in}{\\footnotesize #{a.title}}})
+          %(\\thispagestyle{fancy}\\fancyhf{}\\lhead{#{ocp}~~}\\rhead{\\truncate{4.25in}{\\footnotesize #{@confname}}})
         end + '\mbox{}\newpage'
       end.join("\n")
     end.join("\n\n")
