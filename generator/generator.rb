@@ -97,7 +97,7 @@ class Section
       \\usepackage{makecell}
       \\usepackage[fit,breakall]{truncate}
       
-      \\usepackage[top=28mm,left=17mm,right=17mm,bottom=17mm]{geometry}
+      \\usepackage[top=23mm,left=17mm,right=17mm,bottom=17mm,headsep=3mm]{geometry}
       \\usepackage[font=small,skip=0pt]{caption}
       \\usepackage{fancyhdr}
 

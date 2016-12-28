@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 
-def gen_toc(sections, toctitle)
+require './generator.rb'
+
+def gen_toc(sections, toctitle, confname, startpage)
   draft_page_numbers_warned = false
   toc = sections.map do |s|
     if s.status == true or draft_page_numbers_warned then '' else
@@ -39,15 +41,27 @@ def gen_toc(sections, toctitle)
 
     \\usepackage[unicode,colorlinks=false]{hyperref}
     \\usepackage[table,xcdraw]{xcolor}
-    \\usepackage[top=17mm,left=17mm,right=17mm,bottom=17mm]{geometry}
+    \\usepackage[fit,breakall]{truncate}
+
+    \\usepackage[top=23mm,left=17mm,right=17mm,bottom=17mm,headsep=3mm]{geometry}
+    \\usepackage{fancyhdr}
+    \\usepackage{emptypage}
 
     \\usepackage{tocloft}
     \\setlength{\\cftsecnumwidth}{0pt}
     \\setlength{\\cftsubsecnumwidth}{0pt}
 
 
-    \\pagestyle{empty}
+    \\setcounter{page}{#{startpage}}
+
+    \\fancyhf{}
+    \\fancyhead[LE,RO]{\\thepage}
+    \\fancyhead[RE]{\\truncate{4.25in}{\\footnotesize #{confname}}}
+    \\fancyhead[LO]{\\truncate{4.25in}{\\footnotesize #{toctitle}}}
+    \\pagestyle{fancy}
+
     \\begin{document}
+    \\thispagestyle{empty}
     \\begin{center}
     {\\Large \\textbf{#{toctitle}}}
     \\end{center}
