@@ -35,7 +35,7 @@ class Section
       a.start_page = cur_page
       ocp = cur_page
       cur_page += 1
-      "\\renewcommand{\\headrulewidth}{0pt}\\newgeometry{margin=15mm,top=25mm}\\resetHeadWidth" +
+      "\\renewcommand{\\headrulewidth}{0pt}\\newgeometry{margin=15mm,top=23mm}\\resetHeadWidth" +
       if ocp.odd? then
         %(\\thispagestyle{fancy}\\fancyhf{}\\lhead{}\\rhead{#{ocp}})
       else
